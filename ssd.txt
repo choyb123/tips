@@ -1,0 +1,25 @@
+<p>To check if LiveUpdate has been applied on your Windows server with the Symantec Data Center Security (SDCS) agent installed, you can look at the LiveUpdate log file. The location of this log file depends on your Windows Server version:</p>
+<p></p>
+<p>Windows Server 2003: C:\Documents and Settings\All Users\Application Data\Symantec\LiveUpdate</p>
+<p></p>
+<p>Windows Server 2008 and later: C:\ProgramData\Symantec\LiveUpdate.</p>
+<p></p>
+<p>Additionally, in SDCS, you can navigate to the Definitions tab on the Security Virtual Appliance (SVA) Overview page to see details about the latest LiveUpdates applied </p>
+<p> </p>
+<p>For Windows Server 2022 with Symantec Data Center Security (SDCS) installed, you can check the LiveUpdate log file to verify updates. The log file is typically located at:</p>
+<p></p>
+<p>C:\ProgramData\Symantec\LiveUpdate</p>
+<p></p>
+<p>Additionally, you can review the Definitions tab in the SDCS management console to confirm the latest updates applied. </p>
+<p> </p>
+<p>Agent Logs:</p>
+<p></p>
+<p>/var/log/sdcsslog/ directory often contains logs related to the agent&#x27;s operations, including updates and events.</p>
+<p></p>
+<p>Update Logs:</p>
+<p></p>
+<p>Look for logs in /opt/Symantec/sdcssagent/IDS/system/ or similar directories. Files like agent.log or update.log may provide details about daily updates.</p>
+<p></p>
+<p>Management Console:</p>
+<p></p>
+<p>If you&#x27;re using the SDCS management console, it can provide insights into the update status and applied policies for the agent.</p>
