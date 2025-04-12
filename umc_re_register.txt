@@ -1,0 +1,35 @@
+To check if the Unified Management Console (UMC) is registered with the Symantec Data Center Security (SDCS) Management Server, follow these steps:
+
+1. Verify Registration Status:
+
+Open the UMC in your browser by navigating to:
+
+https://<UMC_IP_or_Hostname>:8443/webportal
+Log in with your credentials.
+
+Check if the assets, policies, and other data from the Management Server are visible. If they are missing, the UMC might not be registered.
+
+2. Use the Registration Tool:
+
+On the Management Server, locate the registerProduct.bat script. It is typically found in:
+
+C:\Program Files (x86)\Symantec\Data Center Security Server\Server\tools
+Run the script as an administrator to re-register the UMC with the Management Server.
+
+3. Check Logs:
+
+Review the UMC and Management Server logs for any errors related to registration. Logs are usually located in the installation directory under logs.
+
+=========================================================
+
+Yes, the Unified Management Console (UMC) has a section where you can check the registration status. You can navigate to the Settings > Product Setup page within the UMC interface2. This page provides details about the registration status of components like the Operations Director with the UMC.
+
+The status can show various states, such as:
+
+Configured: Successfully registered.
+
+Not Configured: Registration failed.
+
+Pending Approval: Awaiting administrator approval.
+
+Deny Progress or Approval Progress: Indicates the current state of registration actions.
