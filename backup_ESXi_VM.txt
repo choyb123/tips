@@ -1,0 +1,33 @@
+To manually back up your ESXi virtual machines (VMs), follow these steps:
+
+1. Power Off the VM
+Shut down the VM to ensure data consistency during the backup process.
+
+2. Access the Datastore
+Log in to the ESXi host using the VMware vSphere Client or Web Client.
+
+Navigate to Storage and select the datastore where the VM resides.
+
+3. Locate the VM Files
+Browse the datastore and find the folder corresponding to the VM you want to back up. This folder typically contains files like:
+
+.vmdk (virtual disk files)
+
+.vmx (VM configuration file)
+
+.log (log files)
+
+.nvram (BIOS settings)
+
+4. Copy the VM Files
+Use the Download option in the vSphere Client to copy the entire VM folder to a secure backup location (e.g., an external drive or network storage).
+
+Alternatively, use an SCP tool (e.g., WinSCP) to connect to the ESXi host and copy the files manually.
+
+5. Verify the Backup
+Ensure all necessary files have been copied. The .vmdk and .vmx files are critical for restoring the VM.
+
+6. Restore the VM (if needed)
+To restore, upload the backed-up files to the datastore and register the VM by right-clicking the .vmx file and selecting Add to Inventory.
+
+This method is straightforward but requires downtime for the VM. If you'd like to automate or optimize this process, tools like ghettoVCB or scripts can help streamline manual backups
