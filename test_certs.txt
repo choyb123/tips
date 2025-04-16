@@ -1,0 +1,38 @@
+Use OpenSSL to test and inspect certificates associated with Symantec Endpoint Protection or other software. Here’s a general approach:
+
+Step 1: Export the Certificate
+First, you need access to the certificate file (e.g., .pem, .crt) used by Symantec Endpoint Protection. You can often export these from the application or locate them in its installation folder.
+
+Step 2: Use OpenSSL Commands
+Once you have the certificate, OpenSSL can help you inspect and verify it:
+
+1. View Certificate Details
+openssl x509 -in <certificate_file> -text -noout
+
+This displays all the information about the certificate, such as the issuer, validity period, and subject details.
+
+2. Check Certificate Expiration
+openssl x509 -enddate -noout -in <certificate_file>
+This shows when the certificate expires.
+
+3. Test Connectivity with Certificate
+If Symantec Endpoint Protection uses TLS/SSL, you can test the connection:
+
+openssl s_client -connect <server>:<port> -showcerts
+Replace <server> and <port> with the endpoint’s address and port number. This command initiates a connection and shows the certificates used during the handshake.
+
+4. Validate Certificate Chain
+You can check if the certificate chain is complete and trusted:
+
+openssl verify -CAfile <ca_file> <certificate_file>
+Replace <ca_file> with the trusted certificate authority (CA) file and <certificate_file> with the certificate you want to verify.
+
+The port depends on the service you're testing. For Symantec Endpoint Protection, common ports used are:
+
+443: For secure HTTPS communication.
+
+80: For unsecured HTTP communication.
+
+8443: Often used for management console connections.
+
+2967: Default for client-server communication in Symantec Endpoint Protection.
