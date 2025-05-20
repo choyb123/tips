@@ -1,0 +1,49 @@
+1. Install the Linux Agent
+Download the installation package from Symantec Endpoint Protection Manager (SEPM) or Broadcom’s official site.
+
+Run the installer:
+
+bash
+sudo ./install.sh
+Verify installation:
+
+bash
+/usr/lib/symantec/status.sh
+
+2. Configure Communication with SEPM
+Ensure the client is connected to SEPM:
+
+bash
+cat /etc/symantec/sep/sylink.xml
+If needed, replace the sylink.xml file with the correct configuration from SEPM.
+
+
+3. Enable Auto-Protect
+Check if Auto-Protect is running:
+
+bash
+cat /proc/sisap/status
+If disabled, enable it:
+
+bash
+sudo /opt/Symantec/sdcssagent/AMD/tools/ap.sh --enable
+
+4. Update Virus Definitions
+Use LiveUpdate:
+
+bash
+
+sudo /opt/Symantec/sdcssagent/AMD/tools/lu.sh
+
+5. Verify Protection Status
+Check definitions:
+
+bash
+
+ls /opt/Symantec/sdcssagent/AMD/sef/definitions/
+
+Run a test scan:
+
+bash
+sudo sav scan /
+
