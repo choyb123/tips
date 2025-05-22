@@ -1,0 +1,121 @@
+
+You can install Data Protector on a Linux client either remotely using the Installation Server or locally using the Unix installation package. Here’s a general guide:
+
+Remote Installation
+---------------------
+Ensure the Linux client is reachable from the Installation Server.
+
+Use the Installation Server for Linux to deploy the client remotely.
+
+Run the installation command from the Installation Server.
+
+Local Installation
+--------------------
+Mount the installation media:
+
+bash
+mount /dev/cdrom /media/cdrom
+cd /media/cdrom/LOCAL_INSTALL
+Install the required packages:
+
+bash
+aptitude install rpm
+mkdir -p /var/lib/rpm
+rpm --initdb
+aptitude install netkit-inetd
+Run the installation script:
+
+bash
+./omnisetup.sh -install da,ma
+Verify the installation:
+
+bash
+tail /etc/services
+grep omni /etc/inetd.conf
+
+bash
+./omnisetup.sh -install da,ma
+is used to install Data Protector components on a Linux client. Here’s what each part of the command does:
+
+./omnisetup.sh: Runs the Data Protector setup script from the current directory.
+
+-install: Specifies that you want to install components.
+
+da,ma: Indicates which components to install:
+
+da (Disk Agent) – Enables backup and restore operations by managing file system interactions.
+
+ma (Media Agent) – Handles communication between the client and backup devices, such as tape drives or disk storage.
+
+After running this command, Data Protector sets up these components and registers the client with the Cell Manager (the central management server for Data Protector).
+
+1. Check Running Processes
+Ensure that Data Protector services are up and running:
+
+bash
+ps -ef | grep omni
+If the processes related to omni are running, that’s a good sign.
+
+2. Verify the Configuration Files
+Check if the relevant files exist and contain expected configurations:
+
+bash
+ls -l /etc/opt/omni
+cat /etc/inetd.conf | grep omni
+If you see entries for Disk Agent (da) and Media Agent (ma), it means they were installed
+
+3. Check the Client Registration
+Run the following command to see if the client is registered with the Cell Manager:
+
+bash
+omnicc -query
+The output should list the installed components.
+
+4. Test Connectivity
+Try communicating with the Cell Manager to ensure the client is functioning correctly:
+
+bash
+omnicheck -host <client_hostname>
+
+5. Check Installed Packages
+Verify that the correct packages were installed:
+
+bash
+rpm -qa | grep omni
+
+1. Add the Client to the Data Protector Cell
+Run the following command on the Cell Manager to add the new client:
+
+bash
+omnicc -add_host <client_hostname>
+Replace <client_hostname> with the actual name or IP of the Linux client.
+
+2. Verify Client Connectivity
+Check if the Cell Manager can communicate with the client:
+
+bash
+omnicheck -host <client_hostname>
+If there are connection issues, ensure firewall rules allow Data Protector traffic.
+
+3. Assign Backup Configuration
+Open the Data Protector GUI on the Cell Manager.
+
+Navigate to Clients and verify that your Linux client appears.
+
+Assign backup policies to the client so it can be included in scheduled backups.
+
+4. Check Licensing
+Ensure the required license for the Disk Agent (da) and Media Agent (ma) is active:
+
+bash
+omnicc -license
+
+5. Run a Test Backup
+Once everything is set up:
+
+Create a test backup job that includes the Linux client.
+
+Run the backup manually and check the logs:
+
+bash
+omnidb -session -latest
