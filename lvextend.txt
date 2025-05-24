@@ -1,0 +1,13 @@
+lvextend -L NEW_Size /dev/vg-group-name/lv-name
+
+then you have to xfs_growfs to increase the size of an xfs filesystem:
+
+xfs_growfs -d /dev/vg-group-name/lv-name
+
+
+Just imagine you want to extend 5G:
+
+lvextend -L +5G /dev/mapper/vggroup_name-lv_name -r
+with the -r you can spare the command xfs_grow (-r will do its job).
+
+Do not forget the + symbol in the 5G ---> -L +5G.
