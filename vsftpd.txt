@@ -6,7 +6,6 @@ firewall-cmd --add-port=50000-50100/tcp
 
 vsftpd.conf
 
-anonymous_enable=NO
 local_enable=YES
 write_enable=YES
 local_umask=022
@@ -16,9 +15,11 @@ connect_from_port_20=YES
 xferlog_std_format=YES
 listen=NO
 listen_ipv6=YES
+no_anon_password=YES
+anonymous_enable=YES
 
 pam_service_name=vsftpd
-local_root=/var/ftp/pub
+local_root=/var/ftp
 pasv_enable=YES
 pasv_min_port=50000
 pasv_max_port=50100
