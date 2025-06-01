@@ -23,3 +23,34 @@ local_root=/var/ftp
 pasv_enable=YES
 pasv_min_port=50000
 pasv_max_port=50100
+
+====================================
+Securing anonymous access in vsftpd is crucial to prevent unauthorized file access or misuse. Here are some steps you can take:
+
+Restrict Write Permissions
+
+  Set write_enable=NO to prevent anonymous users from uploading files.
+
+Use anon_upload_enable=NO and anon_mkdir_write_enable=NO to ensure anonymous users cannot create directories or upload files.
+
+Limit File Access
+
+  Set anon_world_readable_only=YES to allow anonymous users to only read publicly accessible files.
+
+Place files in a restricted directory (e.g., /var/ftp/pub) rather than allowing access to the entire system.
+
+Chroot Anonymous Users
+
+  Enable chroot_local_user=YES and chroot_list_enable=NO to prevent users from navigating outside their home directory.
+
+Set Connection Limits
+
+  Use max_clients=N and max_per_ip=M to control the number of simultaneous connections.
+
+Configure idle_session_timeout=T to disconnect inactive users.
+
+Log and Monitor Activity
+
+  Enable logging with vsftpd_log_file=/var/log/vsftpd.log to track access and potential security threats.
+
+Regularly review logs to detect suspicious activity.
