@@ -1,0 +1,10 @@
+
+yum --disablerepo="*" --enablerepo="<desired-repo-id>" install package-name
+
+yum --disablerepo="*" --enablerepo="rhel-8-for-x86_64-baseos-rpms,rhel-8-for-x86_64-appstream-rpms"  install  vsftpd
+
+ yum --security update-minimal --exclude kernel* | tee /var/tmp/update_list_20250603.txt (exclude kernel)
+
+===============
+check  yum.conf , disable proxy
+make sure redhat.repo   all enabled = 0
