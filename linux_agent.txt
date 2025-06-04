@@ -1,5 +1,5 @@
 1. Install the Linux Agent
-Download the installation package from Symantec Endpoint Protection Manager (SEPM) or Broadcom’s official site.
+Download the installation package from Symantec Endpoint Protection Manager (SEPM) or Broadcomâ€™s official site.
 
 Run the installer:
 
@@ -46,4 +46,41 @@ Run a test scan:
 
 bash
 sudo sav scan /
+=========================================================
+lxpew22
+
+./LinuxInstaller  -- --local-repo file:/var/tmp/sep_ag_repo/SAL/1.4/
+
+
+ ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
+
+=============================
+ ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
+
+Symantec Agent for Linux
+Symantec Endpoint Protection (SEPM) 14.3.9537.9000
+
+Updating scripts package:
+
+ Package                                  Installed          Update          Source
+ ---------------------------------------- ---------------    --------------- ------
+ sdcss-scripts                            2.2.10-45       -> 2.2.10-53       (repo)
+Agent upgrade of scripts package successful: sdcss-scripts-2.2.10-53
+Re-running installer script (ver 2.2.10.53)
+
+Symantec Agent for Linux
+Symantec Endpoint Protection (SEPM) 14.3.9537.9000
+
+No update needed for sdcss-kmod (10.0.8-2591)
+
+Updating packages:
+
+ Package                                  Installed          Update          Source
+ ---------------------------------------- ---------------    --------------- ------
+ sdcss-caf                                2.0.9-236       -> 2.0.9-243       (repo)
+ sdcss                                    6.10.0-9537     -> 6.10.0-9644     (repo)
+
+Stopping Agent..
+Agent upgrade of packages successful: sdcss-caf-2.0.9-243 sdcss-6.10.0-9644
+Restarting Agent..
 
