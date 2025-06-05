@@ -2,7 +2,7 @@
 
 firewall-cmd --add-port=50000-50100/tcp
 
-
+selinux should be permissive
 
 vsftpd.conf
 
