@@ -1,6 +1,9 @@
 
-
 firewall-cmd --add-port=50000-50100/tcp
+
+vsftpd
+mount --bind /patch_update /var/ftp/pub/localrepo
+mount --bind /etc/pki/rpm-gpg /var/ftp/pub/key
 
 selinux should be permissive
 
