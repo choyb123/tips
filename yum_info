@@ -8,3 +8,11 @@ yum --disablerepo="*" --enablerepo="rhel-8-for-x86_64-baseos-rpms,rhel-8-for-x86
 ===============
 check  yum.conf , disable proxy
 make sure redhat.repo   all enabled = 0
+
+vsftpd
+mount --bind /patch_update /var/ftp/pub/localrepo
+ mount --bind /etc/pki/rpm-gpg /var/ftp/pub/key
+
+restorecon -R /var/ftp/pub
+then no need selinux need "permissive"
+
