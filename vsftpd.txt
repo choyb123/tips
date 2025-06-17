@@ -5,7 +5,12 @@ vsftpd
 mount --bind /patch_update /var/ftp/pub/localrepo
 mount --bind /etc/pki/rpm-gpg /var/ftp/pub/key
 
-selinux should be permissive
+* check  yum.conf , disable proxy
+make sure redhat.repo   all enabled = 0
+
+restorecon -R /var/ftp/pub
+then no need selinux need "permissive"
+
 
 vsftpd.conf
 
