@@ -1,0 +1,26 @@
+<service>
+
+  <!-- ID of the service. It should be unique across the Windows system-->
+  <id>myapp</id>
+ <name>MRTG_Linux</name>
+ <description>MRTG Linux</description>
+  <!-- Path to the executable, which should be started -->
+  <!-- CAUTION: Don't put arguments here. Use <arguments> instead. -->
+  <executable>C:\Strawberry\perl\bin\perl</executable>
+   <arguments>C:\mrtg-2.17.10\bin\mrtg C:\mrtg-2.17.10\Linux\linux.cfg</arguments>
+
+</service>
+
+
+<service>
+
+  <!-- ID of the service. It should be unique across the Windows system-->
+  <id>win-app</id>
+ <name>MRTG_Windows</name>
+ <description>MRTG Windows</description>
+  <!-- Path to the executable, which should be started -->
+  <!-- CAUTION: Don't put arguments here. Use <arguments> instead. -->
+  <executable>C:\Strawberry\perl\bin\perl</executable>
+   <arguments>C:\mrtg-2.17.10\bin\mrtg C:\mrtg-2.17.10\win\win.cfg</arguments>
+
+</service>
