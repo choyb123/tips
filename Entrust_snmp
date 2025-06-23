@@ -1,0 +1,232 @@
+Yes—for Entrust’s SNMP agent, SNMPv3 with authentication is strongly recommended and often required for security reasons. Entrust leans into SNMPv3 specifically because of its support for:
+
+Authentication (verifies the sender)
+
+Encryption (privacy) (protects the payload)
+
+Access control (restricts what’s visible and who can see it)
+
+SNMPv1 and v2c rely on community strings and send data in plaintext, which makes them pretty vulnerable—so Entrust’s agent doesn’t typically expose interfaces via those versions.
+
+So yes, if you're configuring MRTG to talk to an Entrust HSM via SNMP, you’ll need to:
+
+Define a SNMPv3 user (createUser in snmpd.conf)
+
+Set authentication (e.g., SHA) and privacy (e.g., AES) protocols
+
+Match those settings in MRTG’s cfgmaker command
+
+
+I have the Entrust snmpd running, like to use MRTG monitor ,but cfgmaker cannot get data from it , why
+If cfgmaker isn’t pulling data from Entrust’s SNMP agent, there are a few likely culprits—especially since Entrust uses SNMPv3, which can be a bit finicky with MRTG.
+
+Here’s a checklist to help troubleshoot:
+
+SNMPv3 Compatibility: MRTG’s cfgmaker does support SNMPv3, but the syntax must be precise. A working example might look like:
+
+
+cfgmaker --enablesnmpv3 --username=snmpuser --authpassword='authpass' --authprotocol=sha \
+--privpassword='privpass' --privprotocol=aes --contextengineid=00:00:00:... \
+snmpuser@hostname:::::3 > mrtg.cfg
+Make sure your Entrust SNMP agent is configured to accept these credentials and protocols.
+
+SNMPwalk Test: Try running an snmpwalk with the same credentials. If that fails, cfgmaker won’t work either. For example:
+
+snmpwalk -v3 -u snmpuser -A 'authpass' -a SHA -X 'privpass' -x AES -l authPriv hostname
+MIB Support: Entrust’s SNMP agent may not expose standard interface OIDs that cfgmaker expects. You might need to manually specify OIDs or use custom targets in MRTG.
+
+Firewall or ACLs: Ensure that UDP port 161 is open and not blocked between your MRTG host and the Entrust device.
+
+Verbose Output: Run cfgmaker with --debug to get more insight into where it’s failing.
+
+
+Yes, you can run Net-SNMP alongside Entrust’s SNMP agent—as long as each listens on a different UDP port to avoid conflicts.
+
+Here’s how to make it work:
+
+Choose a non-default port for Net-SNMP (e.g., 16161).
+
+Edit Net-SNMP’s config (/etc/snmp/snmpd.conf) and add:
+
+agentAddress udp:16161
+This tells Net-SNMP to bind to UDP port 16161 instead of the default 161.
+
+Start Net-SNMP and verify it’s listening:
+
+sudo systemctl start snmpd
+sudo netstat -anu | grep 16161
+
+Keep Entrust’s SNMP agent on port 161 (or whichever it’s using), and ensure both services are configured not to overlap.
+
+
+Yes! Entrust uses SNMP (Simple Network Management Protocol) to monitor and manage its nShield Hardware Security Modules (HSMs). Their SNMP monitoring agent is based on the open-source Net-SNMP project and allows integration with third-party SNMP manager applications.
+
+Here’s a quick rundown of how it works:
+
+Installation: On Linux, the SNMP agent is installed automatically with the Security World Software. On Windows, it can be installed and activated separately.
+
+Configuration: You can set up SNMP v3 with either trap or polling servers, using user-based or certificate-based security models.
+
+Monitoring: The agent enables real-time visibility into HSM status, sending alerts and allowing remote management—ideal for distributed data centers.
+
+If you're setting this up or troubleshooting, I can help walk you through the configuration steps or explain the MIB structure. Want to dive deeper into any part of it?
+
+
+Edit in a page
+I have the Entrust snmpd running, like to use MRTG monitor ,but cfgmaker cannot get data from it , why
+If cfgmaker isn’t pulling data from Entrust’s SNMP agent, there are a few likely culprits—especially since Entrust uses SNMPv3, which can be a bit finicky with MRTG.
+
+Here’s a checklist to help troubleshoot:
+
+SNMPv3 Compatibility: MRTG’s cfgmaker does support SNMPv3, but the syntax must be precise. A working example might look like:
+
+cfgmaker --enablesnmpv3 --username=snmpuser --authpassword='authpass' --authprotocol=sha \
+--privpassword='privpass' --privprotocol=aes --contextengineid=00:00:00:... \
+snmpuser@hostname:::::3 > mrtg.cfg
+Make sure your Entrust SNMP agent is configured to accept these credentials and protocols.
+
+SNMPwalk Test: Try running an snmpwalk with the same credentials. If that fails, cfgmaker won’t work either. For example:
+
+snmpwalk -v3 -u snmpuser -A 'authpass' -a SHA -X 'privpass' -x AES -l authPriv hostname
+MIB Support: Entrust’s SNMP agent may not expose standard interface OIDs that cfgmaker expects. You might need to manually specify OIDs or use custom targets in MRTG.
+
+Firewall or ACLs: Ensure that UDP port 161 is open and not blocked between your MRTG host and the Entrust device.
+
+Verbose Output: Run cfgmaker with --debug to get more insight into where it’s failing.
+
+There’s a GitHub thread where someone resolved a similar issue by tweaking the SNMPv3 options—might be worth a peek.
+
+If you want, I can help you craft a working cfgmaker command based on your SNMP settings. Just share what you’ve got so far.
+
+it must be snmp v3 and authenticated ?
+Yes—for Entrust’s SNMP agent, SNMPv3 with authentication is strongly recommended and often required for security reasons. Entrust leans into SNMPv3 specifically because of its support for:
+
+Authentication (verifies the sender)
+
+Encryption (privacy) (protects the payload)
+
+Access control (restricts what’s visible and who can see it)
+
+SNMPv1 and v2c rely on community strings and send data in plaintext, which makes them pretty vulnerable—so Entrust’s agent doesn’t typically expose interfaces via those versions.
+
+So yes, if you're configuring MRTG to talk to an Entrust HSM via SNMP, you’ll need to:
+
+Define a SNMPv3 user (createUser in snmpd.conf)
+
+Set authentication (e.g., SHA) and privacy (e.g., AES) protocols
+
+Match those settings in MRTG’s cfgmaker command
+
+If you’d like, share your SNMP config and MRTG command and I’ll help patch them up.
+
+can i install net-snmp and work side by side with Entrust snmp but listen on another udp port ?
+Yes, you can run Net-SNMP alongside Entrust’s SNMP agent—as long as each listens on a different UDP port to avoid conflicts.
+
+Here’s how to make it work:
+
+Choose a non-default port for Net-SNMP (e.g., 16161).
+
+Edit Net-SNMP’s config (/etc/snmp/snmpd.conf) and add:
+
+agentAddress udp:16161
+This tells Net-SNMP to bind to UDP port 16161 instead of the default 161.
+
+Start Net-SNMP and verify it’s listening:
+
+sudo systemctl start snmpd
+sudo netstat -anu | grep 16161
+Keep Entrust’s SNMP agent on port 161 (or whichever it’s using), and ensure both services are configured not to overlap.
+
+Entrust’s own documentation confirms that if another SNMP agent is running, you must configure ports to avoid conflicts. So yes—this setup is supported, and it’s a smart way to monitor both Entrust-specific metrics and general system stats.
+
+Want help crafting a dual-agent config or testing both with snmpwalk?
+
+using a different port, how cfgmaker can test it out
+Great question—cfgmaker doesn’t have a direct flag for specifying a non-default SNMP port, but there’s a clever workaround.
+
+You can append the port number to the hostname using a colon, like this:
+
+cfgmaker --enablesnmpv3 --username=snmpuser --authpassword='authpass' \
+--authprotocol=sha --privpassword='privpass' --privprotocol=aes \
+snmpuser@hostname:16161:::::3 > mrtg.cfg
+That :16161 tells cfgmaker to connect to SNMP on UDP port 16161 instead of the default 161. It works because cfgmaker passes that string to the underlying SNMP library, which interprets the port correctly.
+
+Make sure:
+
+Your SNMP agent is actually listening on that port (netstat -anu or ss -ulpn can help).
+
+You can snmpwalk to that port with the same credentials.
+
+Want help testing it with snmpwalk first to confirm connectivity?
+
+so after install net-snmp, how do I cfgmaker to the new snmpd on 16161 udp
+Once Net-SNMP is installed and configured to listen on UDP port 16161, you can point cfgmaker to it by specifying the port directly in the target string. Here's how to do it for SNMPv3:
+
+bash
+cfgmaker --enablesnmpv3 \
+  --username=snmpuser \
+  --authpassword='authpass' \
+  --authprotocol=sha \
+  --privpassword='privpass' \
+  --privprotocol=aes \
+  snmpuser@your-hostname:16161:::::3 > mrtg.cfg
+A few things to double-check:
+
+Replace your-hostname with the actual hostname or IP of the machine running Net-SNMP.
+
+Make sure snmpd is running and listening on port 16161 (sudo netstat -anu | grep 16161).
+
+Test connectivity first with snmpwalk:
+
+bash
+snmpwalk -v3 -u snmpuser -A 'authpass' -a SHA -X 'privpass' -x AES -l authPriv your-hostname:16161
+If snmpwalk works, cfgmaker should too. Want help building a full MRTG config from this?
+
+this new snmpd , I dont need v3 and no authentication , just collect CPU and memory usage
+Perfect—if you're using Net-SNMP and don't need SNMPv3, you can absolutely configure it for SNMPv2c (or even v1) with no authentication, which is much simpler for local monitoring like CPU and memory.
+
+Here’s how to get cfgmaker working with that setup:
+
+Set up Net-SNMP for SNMPv2c In /etc/snmp/snmpd.conf, make sure you have something like:
+
+rocommunity public
+agentAddress udp:16161
+This allows read-only access using the community string public on port 16161.
+
+Restart the SNMP daemon
+
+bash
+sudo systemctl restart snmpd
+Test with snmpwalk
+
+bash
+snmpwalk -v2c -c public localhost:16161
+If that works, you're golden.
+
+Run cfgmaker Now generate your MRTG config:
+
+bash
+cfgmaker public@localhost:16161 > mrtg.cfg
+
+Add CPU and memory manually (optional) Net-SNMP doesn’t expose CPU/memory by default in a way MRTG expects. 
+You can add them using custom OIDs or extend scripts. For example:
+
+extend cpuLoad /bin/cat /proc/loadavg
+extend memFree /usr/bin/free -m
+
+Example: Monitoring CPU Load via Net-SNMP
+If you’ve extended SNMP to expose CPU load like this:
+
+ini
+extend cpuLoad /bin/cat /proc/loadavg
+
+Target[cpu]: `/usr/bin/snmpget -v2c -c public localhost:16161 NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."cpuLoad" | cut -d' ' -f1` & `/usr/bin/snmpget -v2c -c public localhost:16161 NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."cpuLoad" | cut -d' ' -f1`
+
+For Memory Usage
+You might use:
+
+Target[mem]: .1.3.6.1.4.1.2021.4.6.0&.1.3.6.1.4.1.2021.4.5.0:public@localhost:16161
+
+.1.3.6.1.4.1.2021.4.6.0 = free memory
+.1.3.6.1.4.1.2021.4.5.0 = total memory
+
