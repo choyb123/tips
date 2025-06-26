@@ -1,0 +1,31 @@
+perl cfgmaker --zero-speed=10000000  hkpocomm@lxpdir21 hkpocomm@lxpdir22 hkpocomm@lxpntp21 hkpocomm@lxpntp22 hkpocomm@lxpntp23 hkpocomm@lxpntp24 hkpocomm@lxpew21 hkpocomm@lxpew22 hkpocomm@lxpcas21 hkpocomm@lxpres21 hkpocomm@lxprep21 hkpocomm@lxprep22 -o  ..\LinuxD\linux.cfg
+
+WorkDir:
+C:\inetpub\wwwroot\linux
+
+D:\Software\mrtg-2.17.10\bin>
+
+perl  indexmaker --output=C:\inetpub\wwwroot\linux\index.html   ..\LinuxD\linux.cfg
+
+perl mrtg  ..\LinuxD\linux.cfg
+
+
+Free mem %
+free | grep Mem | awk '{print $4/$2 * 100.0}'
+
+
+ps -A -o pcpu | tail -n+2 | paste -sd+ | bc
+
+notepad++ (CTRL Q) comment multiple
+
+PortQry.exe   -n lxpntp21   -p udp   -e  161  -cn !hkpocomm!
+
+
+ cfgmaker --snmp-options=:::::2 --output ..\winD\win.cfg hkpocomm@mspxap21 hkpocomm@mspdom21 hkpocomm@mspdom22 \
+    hkpocomm@mspep21 hkpocomm@mspxap22 \
+   hkpocomm@mspiap21 hkpocomm@mapiap22 hkpocomm@mspopt21 hkpocomm@mspopt22 hkpocomm@mspcif21 hkpocomm@mspcif22  \
+   hkpocomm@mspmgt21 hkpocomm@mspmgt22 hkpocomm@mspmgt23
+
+240.103
+D:\Strawberry\perl
+C:\temp\mrtg-2.17.10
