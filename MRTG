@@ -20,6 +20,10 @@ notepad++ (CTRL Q) comment multiple
 
 PortQry.exe   -n lxpntp21   -p udp   -e  161  -cn !hkpocomm!
 
+RunAsDaemon: yes
+Interval: 5
+LoadMIBs: D:\Software\mrtg-2.17.10\mibs\UCD-SNMP-MIB.txt
+
 
  cfgmaker --snmp-options=:::::2 --output ..\winD\win.cfg hkpocomm@mspxap21 hkpocomm@mspdom21 hkpocomm@mspdom22 \
     hkpocomm@mspep21 hkpocomm@mspxap22 \
