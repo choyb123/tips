@@ -1,0 +1,39 @@
+Yes, that Telemetry process plays a key role in enabling real-time data sharing between your Symantec Endpoint Protection (SEP) agent and Symantec EDR.
+
+When the Telemetry service is running, it collects and transmits behavioral and threat-related data—like process activity, file changes, and detection events—from the endpoint to Symantec’s cloud or your EDR appliance. This data is essential for:
+
+Real-time threat detection
+
+Correlating events across endpoints
+
+Triggering automated playbooks or sandbox submissions
+
+If the Telemetry process is stopped, your EDR may lose visibility into that endpoint’s activity, which can weaken your detection and response capabilities.
+
+== What You Can Do
+Restart the SEP services: Sometimes the Telemetry process stops due to a service conflict or deadlock. Restarting the SEP client services can bring it back online.
+
+Check SEPM policies: Ensure that telemetry submission is enabled in your group policy settings.
+
+Review logs: Look for errors in the SEP client logs or use SymDiag to diagnose issues.
+
+If the process consistently fails to start, it might be worth reinstalling the SEP client or checking for compatibility issues with your OS version.
+
+You can enable telemetry submission for Symantec Endpoint Protection (SEP) clients right from the Symantec Endpoint Protection Manager (SEPM) console. Here's how to find and configure it:
+
+== To Enable Client Telemetry Submission:
+Open SEPM Console
+
+Go to Clients and select the group you want to configure.
+
+Click the Policies tab.
+
+Under Location-specific Settings, click Tasks > Edit Settings.
+
+Navigate to the Submissions tab.
+
+Check the box for “Let this computer automatically forward selected anonymous security information to Symantec.”
+
+Choose the types of data to submit (e.g., file reputation, SONAR detections, antivirus detections).
+
+This setting ensures that your SEP clients send pseudonymous threat data to Symantec, which is essential for enhanced threat intelligence and for EDR to correlate endpoint activity effectively
