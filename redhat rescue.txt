@@ -1,0 +1,36 @@
+Booting Red Hat Linux into rescue mode is a powerful way to troubleshoot issues when your system won’t boot normally. Here are two common methods, depending on your version and setup:
+
+Method 1: Using Installation Media (Anaconda Rescue Mode)
+Insert the RHEL installation DVD/ISO or bootable USB.
+
+Boot from it and at the boot prompt, type:
+
+linux rescue
+Follow the prompts to select language, keyboard, and network.
+
+The system will attempt to mount your existing Linux installation under /mnt/sysimage.
+
+To access it:
+
+chroot /mnt/sysimage
+Now you can reset passwords, fix configs, or repair filesystems.
+
+Method 2: Break into Emergency Shell (rd.break)
+Reboot your system and press e at the GRUB menu to edit the boot entry.
+
+Find the line starting with linux and append:
+
+rd.break
+Press Ctrl + X or F10 to boot.
+
+At the prompt:
+
+mount -o remount,rw /sysroot
+chroot /sysroot
+
+Perform your fixes (e.g., reset root password with passwd root).
+
+When done:
+
+touch /.autorelabel
+reboot -f
