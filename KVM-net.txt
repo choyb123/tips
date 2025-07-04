@@ -8,15 +8,17 @@ Interface  Type     Source     Model    MAC
 vnet0      network  my-net     virtio   52:54:00:ab:cd:ef
 
 
-The "Source" column shows the network name — in this case, my-net.
+The "Source" column shows the network name â€” in this case, my-net.
 
 
-That’s the name you’ll use with virsh net-dumpxml my-net to export the network definition.
+Thatâ€™s the name youâ€™ll use with virsh net-dumpxml my-net to export the network definition.
 
-on the Destination Host
+
 
 virsh net-dumpxml my-net > my-net.xml
 scp my-net.xml user@destination:/tmp/
+
+on the Destination Host
 
 Define and start it:
 virsh net-define /tmp/my-net.xml
