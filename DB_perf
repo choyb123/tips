@@ -3,9 +3,19 @@ Key Metrics to Monitor
 This tells you how often Oracle finds data in memory without needing disk access.
 
 sql
-SELECT 1 - (physical_reads / (db_block_gets + consistent_gets)) AS hit_ratio
-FROM   v$sysstat
-WHERE  name IN ('physical reads', 'db block gets', 'consistent gets');
+SELECT 
+  ROUND((1 - (phy.value - lob.value - dir.value) / ses.value) * 100, 2) AS "Buffer Cache Hit Ratio (%)"
+FROM 
+  v$sysstat ses,
+  v$sysstat lob,
+  v$sysstat dir,
+  v$sysstat phy
+WHERE 
+  ses.name = 'session logical reads'
+  AND lob.name = 'physical reads direct (lob)'
+  AND dir.name = 'physical reads direct'
+  AND phy.name = 'physical reads';
+
 Ideal value: > 90%
 
 Low ratio: May indicate poor SQL or insufficient cache size
