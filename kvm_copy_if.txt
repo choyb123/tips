@@ -42,4 +42,4 @@ nmcli connection import type bridge file /tmp/kvm-bridge-backup/br0.nmconnection
 nmcli connection up br0
 
 Bonus:
-nmcli connection show --active | grep bridge)
+nmcli connection show --active | grep bridge
