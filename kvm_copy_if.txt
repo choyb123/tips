@@ -1,0 +1,45 @@
+Step 1: Archive Existing Bridge Configurations
+On Oracle Linux (and most RHEL-based systems), bridge interfaces are defined in:
+
+/etc/sysconfig/network-scripts/ifcfg-* (for legacy network-scripts)
+
+or 
+
+/etc/NetworkManager/system-connections/ (for NetworkManager-managed connections)
+
+To back them up:
+
+bash
+mkdir -p ~/kvm-bridge-backup
+cp /etc/sysconfig/network-scripts/ifcfg-br* ~/kvm-bridge-backup/
+cp /etc/sysconfig/network-scripts/ifcfg-eth* ~/kvm-bridge-backup/
+Or, if you're using NetworkManager:
+
+bash
+nmcli connection export br0 > ~/kvm-bridge-backup/br0.nmconnection
+
+Repeat for each bridge.
+
+Step 2: Transfer to New Host
+Copy the backup folder to the new KVM host:
+
+bash
+scp -r ~/kvm-bridge-backup user@newhost:/tmp/
+
+Step 3: Restore Bridge Configurations
+On the new host:
+
+For network-scripts:
+
+bash
+sudo cp /tmp/kvm-bridge-backup/ifcfg-* /etc/sysconfig/network-scripts/
+sudo systemctl restart network
+
+For NetworkManager:
+
+bash
+nmcli connection import type bridge file /tmp/kvm-bridge-backup/br0.nmconnection
+nmcli connection up br0
+
+Bonus:
+nmcli connection show --active | grep bridge)
