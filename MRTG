@@ -1,11 +1,16 @@
-perl cfgmaker --zero-speed=10000000  hkpocomm@lxpdir21 hkpocomm@lxpdir22 hkpocomm@lxpntp21 hkpocomm@lxpntp22 hkpocomm@lxpntp23 hkpocomm@lxpntp24 hkpocomm@lxpew21 hkpocomm@lxpew22 hkpocomm@lxpcas21 hkpocomm@lxpres21 hkpocomm@lxprep21 hkpocomm@lxprep22 -o  ..\LinuxD\linux.cfg
+perl cfgmaker --zero-speed=10000000 --output ..\LinuxD\linux.cfg  hkpocomm@lxpdir21 hkpocomm@lxpdir22 hkpocomm@lxpntp21 hkpocomm@lxpntp22 hkpocomm@lxpntp23 hkpocomm@lxpntp24 hkpocomm@lxpew21 hkpocomm@lxpew22 hkpocomm@lxpcas21
+hkpocomm@lxpcas22 hkpocomm@lxpres21 hkpocomm@lxpres22 hkpocomm@lxprep21 hkpocomm@lxprep22
 
 WorkDir:
 C:\inetpub\wwwroot\linux
 
 D:\Software\mrtg-2.17.10\bin>
 
+
 perl  indexmaker --output=C:\inetpub\wwwroot\linux\index.html   ..\LinuxD\linux.cfg
+perl indexmaker --output=C:\inetpub\wwwroot\win\index.html   ..\winD\win.cfg
+perl indexmaker --output=C:\inetpub\wwwroot\net\index.html   ..\netw\net.cfg
+
 
 perl mrtg  ..\LinuxD\linux.cfg
 
@@ -20,15 +25,24 @@ notepad++ (CTRL Q) comment multiple
 
 PortQry.exe   -n lxpntp21   -p udp   -e  161  -cn !hkpocomm!
 
-RunAsDaemon: yes
-Interval: 5
-LoadMIBs: D:\Software\mrtg-2.17.10\mibs\UCD-SNMP-MIB.txt
-
-
  cfgmaker --snmp-options=:::::2 --output ..\winD\win.cfg hkpocomm@mspxap21 hkpocomm@mspdom21 hkpocomm@mspdom22 \
     hkpocomm@mspep21 hkpocomm@mspxap22 \
    hkpocomm@mspiap21 hkpocomm@mapiap22 hkpocomm@mspopt21 hkpocomm@mspopt22 hkpocomm@mspcif21 hkpocomm@mspcif22  \
    hkpocomm@mspmgt21 hkpocomm@mspmgt22 hkpocomm@mspmgt23
+
+cfgmaker --snmp-options=:::::2 --output ..\netw\net.cfg hkpocomm@10.42.240.22 hkpocomm@10.42.239.33 hkpocomm@10.42.238.131
+
+RunAsDaemon: yes
+Interval: 5
+LoadMIBs: D:\Software\mrtg-2.17.10\mibs\UCD-SNMP-MIB.txt
+ LoadMIBs: D:\Software\mrtg-2.17.10\mibs\HOST-RESOURCES-MIB.txt
+
+
+240.101
+C:\Software\winsw
+C:\Software\mrtg-2.17.10
+C:\inetpub\wwwroot\win
+C:\inetpub\wwwroot\linux
 
 240.103
 D:\Strawberry\perl
