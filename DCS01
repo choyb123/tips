@@ -1,0 +1,9 @@
+
+Stop Only the DCS Agent (Not SEP)
+
+systemctl stop sisipsagent.service
+systemctl stop sisidsagent.service
+systemctl stop sisipsutil.service
+systemctl stop sisamdagent.service
+
+systemctl status sisipsagent.service
