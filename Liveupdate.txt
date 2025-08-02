@@ -1,0 +1,62 @@
+LIVEUPDATE related
+
+
+
+- Run LiveUpdate manually:
+- Open Symantec Endpoint Protection.
+- Click LiveUpdate to force a definitions update.
+- Wait for the update to complete and check if the error disappears.
+- Restart your machine after updating—sometimes the status doesn’t refresh until reboot.
+ If That Doesn’t Work…
+Here are deeper troubleshooting steps:
+
+1. Check for Expired License
+- Devices with expired licenses won’t receive updates.
+- Go to the Help > License Status section in the client to verify.
+
+2. Corrupted Definitions
+- Sometimes the virus definitions get corrupted.
+- You can manually purge them using Symantec’s cleanup tool. Instructions are available on Broadcom’s support page.
+3. LiveUpdate Failures
+- If LiveUpdate connects but doesn’t install updates:
+- Check your internet connection or proxy settings.
+- Make sure the LiveUpdate client version is compatible with your SEP version.
+- You can reinstall LiveUpdate using the installer that came with your SEP version.
+4. Outdated Software Version
+- If you're running SEP version 14.2 or older, it’s end-of-life and won’t receive updates.
+- Upgrade to version 14.3.x or newer to stay protected.
+
+
+ Steps to Reinstall LiveUpdate
+1. Uninstall Existing LiveUpdate
+- Go to Control Panel > Programs and Features.
+- Find LiveUpdate in the list.
+- Click Uninstall/Change and follow the prompts.
+
+2. Delete Leftover Folders
+After uninstalling, manually delete these folders if they still exist:
+- C:\ProgramData\Symantec\LiveUpdate
+- C:\Program Files (x86)\Symantec\LiveUpdate
+
+
+3. Locate the Installer
+- Find the LUSETUP.EXE file on your SEP installation media.
+- It’s usually under the SEPM folder.
+- If you don’t have the media, you may need to download it from Broadcom’s support portal or contact your IT admin.
+4. Run the Installer
+- Double-click LUSETUP.EXE to begin installation.
+- Follow the on-screen instructions to complete setup.
+
+5. Register SEP with LiveUpdate
+- Open Command Prompt as Administrator.
+- Navigate to the SEP Manager’s bin folder:
+
+cd "C:\Program Files (x86)\Symantec\Symantec Endpoint Protection Manager\bin"
+
+lucatalog.exe -cleanup
+lucatalog.exe -forcedupdate
+
+6. Test LiveUpdate
+- Press Win + R, type luall, and hit Enter.
+- This will launch LiveUpdate and verify it’s working.
+
