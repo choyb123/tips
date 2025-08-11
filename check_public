@@ -14,3 +14,29 @@ FROM dba_dependencies
 WHERE referenced_name = 'UTL_TCP'
   AND referenced_owner IN ('SYS', 'PUBLIC')
   AND owner NOT IN ('SYS', 'PUBLIC');
+======================================
+These commands will show:
+- Which global services are defined
+- Whether they are started and registered
+- Which databases are part of the GDS pool
+- Whether services are enabled and globally started
+
+
+GDSCTL> connect gsm -user gsmadmin_internal
+GDSCTL> status service
+GDSCTL> status database
+GDSCTL> config service
+GDSCTL> config database
+
+Example output:
+Database: "testdb"
+Registered: Y
+State: Ok
+ONS: Y
+Role: PRIMARY
+Region: region1
+Service: "test_service"
+Globally started: Y
+Started: Y
+
+If you see no services, or all are disabled/not registered, it's safe to assume GDS is not actively used.
