@@ -1,0 +1,16 @@
+To check if UTL_TCP has been revoked from PUBLIC
+
+SELECT PRIVILEGE, TABLE_NAME
+FROM DBA_TAB_PRIVS
+WHERE GRANTEE = 'PUBLIC'
+  AND TABLE_NAME = 'UTL_TCP';
+
+
+
+If you're unsure whether revoking this privilege will break anything, you can also check dependencies:
+
+SELECT owner, name AS object_name, referenced_name AS reference
+FROM dba_dependencies
+WHERE referenced_name = 'UTL_TCP'
+  AND referenced_owner IN ('SYS', 'PUBLIC')
+  AND owner NOT IN ('SYS', 'PUBLIC');
