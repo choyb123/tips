@@ -1,0 +1,48 @@
+1. Debian/Ubuntu:
+sudo apt update
+sudo apt install monit
+
+RHEL/CentOS:
+sudo yum install monit
+
+2. Configure Monit
+
+sudo nano /etc/monit/monitrc
+
+
+Uncomment or add these lines to enable basic monitoring and email alerts:
+set daemon 60              # Check every 60 seconds
+set logfile /var/log/monit.log
+
+set mailserver localhost   # Or use your SMTP server
+set alert you@example.com  # Replace with your email
+
+set httpd port 2812 and
+    allow localhost        # Web interface (optional)
+
+
+3. Add CPU Monitoring Rule
+
+Still in monitrc, add:
+
+check system localhost
+    if loadavg (1min) > 4 then alert
+    if cpu usage > 80% for 2 cycles then alert
+
+ 4. Start and Enable Monit
+sudo monit -t         # Test config
+sudo systemctl start monit
+sudo systemctl enable monit
+
+ 5. (Optional) Access Web Interface
+http://localhost:2812
+
+allow remote access by changing allow localhost
+
+allow admin:monit      # username:password
+
+you can use an external SMTP like Gmail:
+set mailserver smtp.gmail.com port 587
+    username "your@gmail.com"
+    password "yourpassword"
+    using tlsv1
