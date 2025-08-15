@@ -1,0 +1,35 @@
+Steps to Allow FTP Directory Access via SELinux
+Verify SELinux Context on the Directory Check the current SELinux label:
+
+ls -Z /path/to/directory
+If it’s incorrect, you can set an appropriate FTP label.
+
+Apply the Correct SELinux Context Use semanage to allow FTP users to access the directory:
+
+sudo semanage fcontext -a -t public_content_t "/path/to/directory(/.*)?"
+This command ensures that SELinux treats the directory as accessible by FTP.
+
+Relabel the Directory Apply the new SELinux label:
+
+sudo restorecon -R /path/to/directory
+
+
+Verify Current SELinux Labels
+Run:
+
+ls -Z /var/ftp/pub
+This will show the specific labels for the pub directory and its files.
+
+2. Correct Unlabeled Files
+For the directory that is unlabeled_t, restore its default SELinux context:
+
+sudo restorecon -R /var/ftp/pub
+This should apply the appropriate SELinux policies based on the default file context.
+
+3. Fix Incorrect Labels (cert_t)
+If the cert_t label isn't appropriate, you can manually set the directory to public_content_t:
+sudo semanage fcontext -a -t public_content_t "/var/ftp/pub(/.*)?"
+
+Then apply the changes:
+
+sudo restorecon -R /var/ftp/pub
