@@ -1,0 +1,31 @@
+Check port being listened
+
+ss -tulnp | grep ":<port_number>"
+
+=========================
+restart sisips
+
+ systemctl status sisips-init
+
+systemctl start sisips-init
+
+/opt/Symantec/sdcssagent/AMD/tools/sav manage -i /tmp/sylink.xml
+
+status of comm with Manager
+curl http://<SEPM_IP>:8014/secars/secars.dll?hello,secars
+
+RE register ( need test)
+sisipsconfig -host <manager_IP_or_hostname> -port 18444 -certfile /path/to/agent-cert.ssl -forcereg
+
+openssl x509 -noout -text -in 'cerfile.cer'
+
+================
+lxpew22, lxpdir21, lxpew21, lxpntp22,lxpntp23,lxprep21, lxprep22,
+/var/tmp/sep_ag_repo, sep_ag_rep.tar.gz
+
+./LinuxInstaller  -- --local-repo file:/var/tmp/sep_ag_repo/SAL/1.4/
+
+
+ ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
+
+
