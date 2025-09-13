@@ -1,3 +1,24 @@
 
 
 Setup.exe /QUIET /ACTION=EditionUpgrade /INSTANCENAME=MSSQLSERVER /PID="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" /IACCEPTSQLSERVERLICENSETERMS
+===================================
+To check your SQL Server version using sqlcmd with Windows Authentication:
+
+(sqlcmd -S localhost\YourInstanceName -E)
+sqlcmd -S localhost\SQLEXPRESS -E
+SELECT @@VERSION;
+GO
+
+In SQL Server Configuration Manager:
+- Go to SQL Server Network Configuration > Protocols for <Instance>
+- Make sure TCP/IP and Named Pipes are enabled
+
+If you're using a named instance, the SQL Server Browser service must be running:
+- In SQL Server Configuration Manager, start SQL Server Browser
+- This helps clients locate named instances
+
+Firewall Rules
+Make sure port 1433 (default for SQL Server) is open:
+- Run netstat -an | find "1433" to check if it’s listening
+- Add an inbound rule in Windows Firewall if needed
+
