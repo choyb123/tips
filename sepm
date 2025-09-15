@@ -52,3 +52,11 @@ SonicDefs
 
 3. smc -start
 
+======================
+SEPM Content Distribution
+
+Confirm SEPM is downloading and distributing definitions correctly (Admin > Servers > Local Site > Show LiveUpdate Downloads)
+
+Client Communication Logs
+
+On affected agents, check SesmLu.log and Log.LiveUpdate Look for fallback attempts or policy mismatches
