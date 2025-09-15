@@ -28,4 +28,27 @@ lxpew22, lxpdir21, lxpew21, lxpntp22,lxpntp23,lxprep21, lxprep22,
 
  ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
 
+==================================
+
+On affected clients, run smc -stop, purge LiveUpdate settings, and restart with smc -start
+
+
+Purge Live UPdate settings
+
+1. smc -stop
+
+2. C:\ProgramData\Symantec\LiveUpdate
+Delete the following files (if present): 
+	Settings.LiveUpdate
+	LiveUpdate.conf
+	Any .dat or .log files
+
+C:\ProgramData\Symantec\Symantec Endpoint Protection\CurrentVersion\Data\Definitions
+Delete all folders inside:
+	VirusDefs
+	IPSDefs
+SonicDefs
+	BehaviorDefs
+
+3. smc -start
 
