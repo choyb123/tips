@@ -77,4 +77,21 @@ Go to Help > Troubleshooting.
 Check the Virus and Spyware Protection Definitions version.
 
 If both match, the client is synced with SEPM.
+======================
+Log.LiveUpdate, SesmLu.log
+
+Located at: C:\ProgramData\Symantec\Symantec Endpoint Protection\CurrentVersion\Data\Logs
+
+Look for entries like:
+
+Code
+Status Message: Server was selected  
+Hostname: [Your SEPM server name or IP]  
+Used proxy list was empty
+==================================
+Lux.log
+Hostname: [SEPM IP or hostname]  
+Proxy ID: {00000000-0000-0000-0000-000000000000}  
+Proxy Bypass: false  
+Used proxy list was empty
 
