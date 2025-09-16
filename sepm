@@ -60,3 +60,21 @@ Confirm SEPM is downloading and distributing definitions correctly (Admin > Serv
 Client Communication Logs
 
 On affected agents, check SesmLu.log and Log.LiveUpdate Look for fallback attempts or policy mismatches
+===============================
+In SEPM, go to Reports > Quick Reports.
+
+Choose Client Status or Virus Definitions Distribution.
+
+Filter by group or time range to see which clients are up-to-date.
+==========================
+In SEPM:
+Go to Admin > Servers > Local Site.
+Click Show LiveUpdate Downloads to see the current definition version.
+
+On the client:
+Open SEP client UI.
+Go to Help > Troubleshooting.
+Check the Virus and Spyware Protection Definitions version.
+
+If both match, the client is synced with SEPM.
+
