@@ -7,3 +7,10 @@ systemctl stop sisipsutil.service
 systemctl stop sisamdagent.service
 
 systemctl status sisipsagent.service
+
+=========================================
+DCS  webportal come up really slow:
+
+If your DCS Manager is configured to connect to a named SQL instance using dynamic ports, but the SQL Browser service is disabled, 
+the Manager can’t resolve the connection properly. This causes delays or timeouts when loading the portal
+
