@@ -94,4 +94,26 @@ Hostname: [SEPM IP or hostname]
 Proxy ID: {00000000-0000-0000-0000-000000000000}  
 Proxy Bypass: false  
 Used proxy list was empty
+========================
+Steps to Configure SEPM for Public LiveUpdate Servers
+Log into SEPM Console
 
+Use an account with admin privileges.
+
+Navigate to Site Properties
+Go to Admin > Servers
+Select your Local Site
+Click Edit Site Properties
+Configure LiveUpdate Settings
+Go to the LiveUpdate tab.
+Click Edit Source Servers
+Select Public LiveUpdate Servers
+
+In the LiveUpdate tab, make sure the option is set to:
+
+Use the default Symantec LiveUpdate server
+Save and Apply
+
+Once that’s set, you can manually trigger an update to test it:
+Go to Admin > Servers > Local Site
+Right-click and choose Download LiveUpdate Content
