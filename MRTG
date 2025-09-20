@@ -47,3 +47,30 @@ C:\inetpub\wwwroot\linux
 240.103
 D:\Strawberry\perl
 C:\temp\mrtg-2.17.10
+=====================================================
+Allow SNMP on UDP 1161 via SELinux
+
+1. Check current SELinux port rules
+bash
+semanage port -l | grep snmp
+
+Code
+snmp_port_t              udp      161
+
+2. Add UDP port 1161 to SELinux for SNMP
+bash
+sudo semanage port -a -t snmp_port_t -p udp 1161
+
+If you get an error like semanage: command not found, install the policycoreutils-python-utils package:
+
+bash
+sudo yum install policycoreutils-python-utils
+
+3. Verify the new rule
+bash
+semanage port -l | grep snmp
+You should now see:
+
+Code
+snmp_port_t              udp      161, 1161
+
