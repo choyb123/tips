@@ -117,3 +117,14 @@ Save and Apply
 Once that’s set, you can manually trigger an update to test it:
 Go to Admin > Servers > Local Site
 Right-click and choose Download LiveUpdate Content
+=====================================
+sesmlu.log
+0x80010830   Server not selected / download failed
+0x00010000   Success
+
+
+
+
+
+
+
