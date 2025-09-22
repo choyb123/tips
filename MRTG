@@ -73,4 +73,18 @@ You should now see:
 
 Code
 snmp_port_t              udp      161, 1161
+============================
+snmpd -c /etc/snmp/snmpd.conf \
+      -Lf /var/log/snmpd.log \
+      -p /var/run/snmpd.pid \
+      -x udp:127.0.0.1:1161
+
+snmpd.conf
+# Access control
+rocommunity public
+syslocation "Server Room A"
+syscontact admin@example.com
+
+# System info
+agentAddress udp:1161
 
