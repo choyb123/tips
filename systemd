@@ -1,0 +1,19 @@
+sudo systemctl edit --full your-service-name.service
+
+
+- Clear Previous ExecStart
+
+[Service]
+ExecStart=
+ExecStart=/new/path/to/your/command
+
+
+- Reload systemd and Restart the Service
+
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl restart your-service-name.service
+
+
+- Verify the Change
+systemctl status your-service-name.service
