@@ -1,0 +1,102 @@
+yum --disablerepo="*" --enablerepo="<desired-repo-id>" install package-name
+
+yum --disablerepo="*" --enablerepo="rhel-8-for-appstream,rhel-8-for-baseos"  install  emacs
+
+ yum --security update-minimal --exclude kernel* | tee /var/tmp/update_list_20250603.txt (exclude kernel)
+
+#yum clean all
+# rm -f /var/lib/rpm/__db*
+# rpm --rebuilddb
+rm /var/lib/rpm/.rpm.lock
+rm /var/lib/rpm/.dbenv.lock
+===============
+* check  yum.conf , disable proxy
+make sure redhat.repo   all enabled = 0
+
+vsftpd
+mount --bind /patch_update /var/ftp/pub/localrepo
+ mount --bind /etc/pki/rpm-gpg /var/ftp/pub/key
+
+restorecon -R /var/ftp/pub
+then no need selinux need "permissive"
+===============
+
+ mount -o loop linux.iso /mnt/iso
+==============
+
+Just imagine you want to extend 5G:
+
+ lvextend -L +5G /dev/mapper/vggroup_name-lv_name -r
+with the -r you can spare the command xfs_grow (-r will do its job).
+
+Do not forget the + symbol in the 5G ---> -L +5G.
+
+=========================
+ss -tulnp | grep ":<port_number>"
+
+=========================
+
+ systemctl status sisips-init
+
+systemctl start sisips-init
+=======================
+
+/opt/Symantec/sdcssagent/AMD/tools/sav manage -i /tmp/sylink.xml
+
+status of comm with Manager
+curl http://<SEPM_IP>:8014/secars/secars.dll?hello,secars
+
+RE register ( need test)
+sisipsconfig -host <manager_IP_or_hostname> -port 18444 -certfile /path/to/agent-cert.ssl -forcereg
+
+openssl x509 -noout -text -in 'cerfile.cer'
+===============
+ Push Updates to Offline Clients
+- Ensure clients are configured to receive updates from SEPM:
+- In SEPM:
+Policies > LiveUpdate > LiveUpdate Settings Policy
+- Set source to:
+"Use the default management server"
+- Clients will receive updates during heartbeat communication with SEPM
+
+
+================
+lxpew22, lxpdir21, lxpew21, lxpntp22,lxpntp23,lxprep21, lxprep22,
+/var/tmp/sep_ag_repo, sep_ag_rep.tar.gz
+
+./LinuxInstaller  -- --local-repo file:/var/tmp/sep_ag_repo/SAL/1.4/
+
+
+ ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
+
+
+
+=============================
+ ./LinuxInstaller  -- --proxy-mode Manual --proxy-address 10.42.240.220 --proxy-protocol HTTP --proxy-port 3128
+
+Symantec Agent for Linux
+Symantec Endpoint Protection (SEPM) 14.3.9537.9000
+
+Updating scripts package:
+
+ Package                                  Installed          Update          Source
+ ---------------------------------------- ---------------    --------------- ------
+ sdcss-scripts                            2.2.10-45       -> 2.2.10-53       (repo)
+Agent upgrade of scripts package successful: sdcss-scripts-2.2.10-53
+Re-running installer script (ver 2.2.10.53)
+
+Symantec Agent for Linux
+Symantec Endpoint Protection (SEPM) 14.3.9537.9000
+
+No update needed for sdcss-kmod (10.0.8-2591)
+
+Updating packages:
+
+ Package                                  Installed          Update          Source
+ ---------------------------------------- ---------------    --------------- ------
+ sdcss-caf                                2.0.9-236       -> 2.0.9-243       (repo)
+ sdcss                                    6.10.0-9537     -> 6.10.0-9644     (repo)
+
+Stopping Agent..
+Agent upgrade of packages successful: sdcss-caf-2.0.9-243 sdcss-6.10.0-9644
+Restarting Agent..
