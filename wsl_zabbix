@@ -34,4 +34,4 @@ sudo systemctl start apache2
 sudo systemctl start mariadb
 
 ========================
- automate this with a community script like 
+ automate this with a community script like Zabbix_wsl on Github
