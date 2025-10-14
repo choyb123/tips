@@ -1,0 +1,27 @@
+Enable WinRM on the Windows server:
+Enable-PSRemoting -Force
+
+
+Firewall allows WinRM traffic
+Set-NetFirewallRule -Name WINRM-HTTP-In-TCP -Enabled True
+
+Verify WinRM Listener, Check that the listener is active
+winrm enumerate winrm/config/listener
+
+From MRTG server, use PowerShell remoting or a wrapper script to call:
+Invoke-Command -ComputerName windows-server -ScriptBlock { Get-Counter '\Processor(_Total)\% Processor Time' }
+
+may need to set up trusted hosts
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "<WindowsServerName>"
+
+WInrm ports
+HTTP  5985  Default for unencrypted WinRM
+HTTPS 5986  Default for encrypted WinRM (SSL/TLS)
+
+
+Openssh
+- MRTG can use ssh to run scripts remotely.
+
+MRTG config
+Target[CPU]: `ssh user@windows-server powershell -command "Get-Counter '\Processor(_Total)\% Processor Time'"`
+
