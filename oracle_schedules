@@ -1,0 +1,7 @@
+SELECT job_name, start_date, repeat_interval, enabled
+FROM dba_scheduler_jobs
+WHERE enabled = 'TRUE';
+
+SELECT * FROM dba_hist_active_sess_history
+WHERE sample_time BETWEEN TO_DATE('YYYY-MM-DD HH24:MI:SS', 'YYYY-MM-DD HH24:MI:SS')
+                      AND TO_DATE('YYYY-MM-DD HH24:MI:SS', 'YYYY-MM-DD HH24:MI:SS');
