@@ -1,0 +1,7 @@
+Then in Task Scheduler:
+- Program/script: powershell.exe
+- Add arguments:
+-ExecutionPolicy Bypass -File "C:\Path\To\HighCPUTracker.ps1"
+
+
+This runs all lines in the script.
