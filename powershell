@@ -1,0 +1,71 @@
+param (
+    [double]$Hours = 1,
+    [double]$Threshold = 10  # Only log processes above this CPU %
+)
+
+$duration = [int]($Hours * 60)
+$logFile = "$env:USERPROFILE\Desktop\CPU_Usage_Above_${Threshold}_Percent_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
+
+Write-Host "Monitoring CPU usage for $Hours hour(s)..."
+Write-Host "Logging processes above $Threshold% CPU to: $logFile"
+
+for ($i = 0; $i -lt $duration; $i++) {
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    Add-Content -Path $logFile -Value "[$timestamp] Processes above $Threshold% CPU:"
+
+    try {
+        $counters = Get-Counter '\Process(*)\% Processor Time'
+        $data = $counters.CounterSamples |
+            Where-Object { $_.CookedValue -ge $Threshold -and $_.InstanceName -ne "_Total" } |
+            Sort-Object CookedValue -Descending
+
+        if ($data.Count -eq 0) {
+            Add-Content -Path $logFile -Value "  [No processes exceeded threshold]"
+        } else {
+            foreach ($entry in $data) {
+                $procName = $entry.InstanceName
+                $cpuPercent = [math]::Round($entry.CookedValue, 2)
+                $line = "  $procName - CPU %: $cpuPercent"
+                Add-Content -Path $logFile -Value $line
+            }
+        }
+    } catch {
+        Add-Content -Path $logFile -Value "  [Error accessing performance counters: $_]"
+    }
+
+    Add-Content -Path $logFile -Value ""
+    Start-Sleep -Seconds 60
+}
+
+======================================================================
+# Set a unique window title
+$host.ui.RawUI.WindowTitle = "HighCPULogger"
+
+# Save the current process ID
+$pid | Out-File "$env:USERPROFILE\Desktop\HighCPULogger.pid"
+
+# Set CPU threshold
+$cpuThreshold = 80
+$logFile = "$env:USERPROFILE\Desktop\HighCPU_Log.csv"
+
+# Write header if log doesn't exist
+if (!(Test-Path $logFile)) {
+    "Timestamp,ProcessName,ProcessID,CPU" | Out-File $logFile
+}
+
+# Monitor loop
+while ($true) {
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $processes = Get-CimInstance Win32_PerfFormattedData_PerfProc_Process | Where-Object {
+        [int]$_.PercentProcessorTime -gt $cpuThreshold -and $_.Name -ne "_Total" -and $_.Name -ne "Idle"
+    }
+
+    foreach ($proc in $processes) {
+        "$timestamp,$($proc.Name),$($proc.IDProcess),$($proc.PercentProcessorTime)" | Out-File $logFile -Append
+    }
+
+    Start-Sleep -Seconds 10
+}
+===========================================
+
+Write-Host "Monitoring complete. Log saved to $logFile"
