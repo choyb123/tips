@@ -1,0 +1,33 @@
+param (
+    [int]$Threshold = 90,
+    [int]$DurationMinutes = 15,
+    [int]$SampleIntervalSeconds = 5,
+    [string]$LogPath = "$env:c:\users\choyb\Desktop\cpu_hog_log.txt"
+)
+
+# Ensure log directory exists
+$logDir = Split-Path $LogPath
+if (-not (Test-Path $logDir)) {
+    New-Item -Path $logDir -ItemType Directory -Force | Out-Null
+}
+
+"[$(Get-Date)] CPU Hog Monitor started. Threshold: $Threshold%, Duration: $DurationMinutes minutes" | Out-File $LogPath -Append
+
+$endTime = (Get-Date).AddMinutes($DurationMinutes)
+
+while ((Get-Date) -lt $endTime) {
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $highCPU = Get-Process | Where-Object { $_.CPU -ne $null } |
+        Sort-Object -Property CPU -Descending |
+        Where-Object { $_.CPU -gt $Threshold }
+
+    foreach ($proc in $highCPU) {
+        "$timestamp | PID: $($proc.Id) | Name: $($proc.ProcessName) | CPU: $([math]::Round($proc.CPU,2))" | Out-File $LogPath -Append
+    }
+
+    Start-Sleep -Seconds $SampleIntervalSeconds
+}
+
+"[$(Get-Date)] Monitoring complete." | Out-File $LogPath -Append
+
+exit 0
