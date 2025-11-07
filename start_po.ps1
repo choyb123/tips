@@ -14,12 +14,20 @@ $endTime = (Get-Date).AddMinutes($DurationMinutes)
 # Check if the log file exists
 if (Test-Path $logFile) {
     # Create a timestamp for the rotated file
-    $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+    $timestamp = Get-Date -Format "yyyyMMdd_HHmm"
     $baseName = [System.IO.Path]::GetFileNameWithoutExtension($logFile)
     $archivedLog = $baseName + "_$timestamp.txt"
 
     # Rename the existing log file
     Rename-Item -Path $logFile -NewName $archivedLog
+}
+
+# Cleanup: keep only the 2 most recent backups
+$Backups = Get-ChildItem -Path "c:\users\choyb\Desktop" -Filter "$baseName_*" |
+    Sort-Object LastWriteTime -Descending
+
+if ($Backups.Count -gt 3) {
+    $Backups | Select-Object -Skip 3 | Remove-Item -Force
 }
 
 
