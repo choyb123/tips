@@ -6,6 +6,8 @@ C:\inetpub\wwwroot\linux
 
 D:\Software\mrtg-2.17.10\bin>
 
+(Get-Content "C:\temp\file.txt" | ForEach-Object { "PREFIX_" + $_ }) -join " "
+
 
 perl  indexmaker --output=C:\inetpub\wwwroot\linux\index.html   ..\LinuxD\linux.cfg
 perl indexmaker --output=C:\inetpub\wwwroot\win\index.html   ..\winD\win.cfg
