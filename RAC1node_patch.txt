@@ -1,0 +1,38 @@
+Patch RAC One Node (2 Nodes)
+│
+├── Preparation (on both nodes)
+│   ├── Node1 + Node2: Backup OCR (ocrconfig -export)
+│   ├── Node1 + Node2: Backup Voting Disks (crsctl query css votedisk + dd/asmcmd backup)
+│   ├── Node1 + Node2: Backup Grid Infrastructure Home (tar/zip)
+│   ├── Node1 + Node2: Backup Oracle Database Home (tar/zip)
+│   └── Node1 + Node2: Verify backups (ocrcheck, crsctl status resource -t)
+│
+├── Patch Application
+│   ├── Step 1: Relocate RAC One Node service
+│   │   ├── Node1: srvctl relocate database -d <dbname> -n Node2
+│   │   └── Node2: Instance now active
+│   │
+│   ├── Step 2: Patch Grid Infrastructure
+│   │   ├── Node1: Stop CRS, apply patch to Grid home
+│   │   └── Node2: Instance running, patch Grid home after Node1 completes
+│   │
+│   ├── Step 3: Patch Oracle Database Home
+│   │   ├── Node1: Apply patch to DB home (inactive instance)
+│   │   └── Node2: Apply patch to DB home (active instance after relocation)
+│   │
+│   └── Step 4: Relocate back
+│       ├── Node2: srvctl relocate database -d <dbname> -n Node1
+│       └── Node1: Instance resumes activity
+│
+├── Post-Patch Validation
+│   ├── Node1: crsctl status resource -t
+│   ├── Node2: crsctl status resource -t
+│   ├── Node1 + Node2: Verify listener/network configs
+│   └── Node1 + Node2: Run regression tests
+│
+└── Rollback (if patch fails)
+    ├── Node1: OPatch rollback or restore Grid/DB home backup
+    ├── Node2: OPatch rollback or restore Grid/DB home backup
+    ├── Node1 + Node2: Import OCR backup (ocrconfig -import)
+    ├── Node1 + Node2: Restore Voting Disks (crsctl replace votedisk / asmcmd md_restore)
+    └── Node1 + Node2: Restart cluster services (crsctl start crs)
