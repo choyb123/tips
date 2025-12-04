@@ -1,0 +1,23 @@
+Palo Alto + SNMP Contexts
+
+VSYS separation: If your firewall is running multiple virtual systems, each VSYS has its own SNMP view. The public community may be bound only to the default VSYS, which exposes just the basic system group (1.3.6.1.2.1.1).
+
+Enterprise OIDs: Palo Alto’s proprietary MIBs live under 1.3.6.1.4.1.25461. To see them, the SNMP agent must be enabled for the correct VSYS and interface.
+
+Interface binding: SNMP on Palo Alto is tied to specific interfaces (e.g., management vs data). If MRTG queries the wrong interface, you’ll only get the minimal system group.
+
+Community scope: Even in SNMPv2c, Palo Alto lets you restrict which OIDs a community can access. One firewall may have public mapped to full enterprise MIBs, while another only exposes system info.
+
+
+How MRTG can adapt
+MRTG itself doesn’t “switch contexts” in SNMPv2c — it just uses whatever the firewall maps to the community string. So your options are:
+
+Use the right interface IP: Point MRTG at the management interface or the interface where SNMP is enabled for the VSYS you want.
+
+Check SNMP settings in PAN-OS:
+
+Go to Device → Setup → Operations → SNMP Setup.
+
+Verify that SNMP is enabled for the correct VSYS.
+
+Confirm the public community has access to more than just system.
