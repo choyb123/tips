@@ -35,3 +35,6 @@ If missing, re‑enable the feature via Windows Features or run:
 Old======DISM /Online /Enable-Feature /FeatureName:NetFx4 /All
 
 DISM /Online /Enable-Feature /FeatureName:NetFx4-AdvSrvs /All
+
+===========================
+reg query "HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Version
