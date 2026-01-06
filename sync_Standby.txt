@@ -1,0 +1,54 @@
+OPTION A :
+
+On the standby:
+SELECT current_scn FROM v$database;
+
+
+On primary, take an incremental backup FROM SCN (the standby’s current SCN).
+
+BACKUP INCREMENTAL LEVEL 1 DATABASE FROM SCN <standby_scn> DATABASE FORMAT '/tmp/inc_bkp_%U';
+
+ALTER DATABASE CREATE STANDBY CONTROLFILE AS '/tmp/standby.ctl';
+
+Transfer to the standby
+scp /tmp/inc_bkp_%U standby:/u01/app/oracle/oradata/DBNAME/inc_bkp_%U
+scp /tmp/standby.ctl standby:/u01/app/oracle/oradata/DBNAME/control01.ctl
+
+(Repeat for all control file locations defined in CONTROL_FILES parameter)
+
+On the standby
+SHUTDOWN IMMEDIATE;
+STARTUP NOMOUNT;
+
+RMAN> RESTORE STANDBY CONTROLFILE FROM '/tmp/standby.ctl';
+
+RMAN>ALTER DATABASE MOUNT;
+
+RMAN> CATALOG START WITH '/tmp/inc_bkp_';
+RMAN> RECOVER DATABASE NOREDO;
+
+
+Once the backup is applied, restart redo apply:
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE DISCONNECT;
+
+============================================================
+OPTION B:
+
+ALTER DATABASE CREATE STANDBY CONTROLFILE AS '/tmp/standby.ctl';
+
+Take a full backup of the primary
+RMAN>BACKUP DATABASE PLUS ARCHIVELOG FORMAT '/tmp/full_bkp_%U';
+
+Copy backup pieces and the standby control file to the standby server.
+
+On the standby
+SHUTDOWN IMMEDIATE;
+STARTUP NOMOUNT;
+RESTORE STANDBY CONTROLFILE FROM '/tmp/standby.ctl';
+ALTER DATABASE MOUNT;
+
+RESTORE DATABASE;
+RECOVER DATABASE;
+
+
+ALTER DATABASE RECOVER MANAGED STANDBY DATABASE DISCONNECT;
