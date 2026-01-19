@@ -1,0 +1,168 @@
+,
+,
+ 2.3.7.7,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon  /v PasswordExpiryWarning   /t REG_DWORD   /d  5  /f
+ 2.3.7.8,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon  /v  ForceUnlockLogon /  t  REG_DWORD   /d  1 /f
+ 2.3.7.9,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon  /v  ScRemoveOption   /t  REG_SZ    /d  1  /f
+ 2.3.8.1 , HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters /v RequireSecuritySignature    /t  REG_DWORD  /d  1 /f
+ 2.3.8.2, HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters  /v  EnableSecuritySignature  /t  REG_DWORD   /fd  1  /f
+ 2.3.8.3, HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters  /v  EnablePla inTextPassword  /t   REG_DWORD   /d  0 /f
+ 2.3.9.1, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v  AutoDisconnect REG_DWORD    /d 5  /f
+ 2.3.9.2, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v RequireSecurit ySignature  /t REG_DWORD   /d  1   /f
+ 2.3.9.3, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v  :EnableSecurity Signature  /t  REG_DWORD   /d  1  /f
+ 2.3.9.4, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters   /v  enableforcedlogoff  /t   REG_DWORD   /d  1  /f
+ 2.3.9.5, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters /v  MBServerNameHardeningLevel   /t  REG_DWORD   /d  1  /f
+ 2.3.10.1 , HKLM\System\CurrentControlSet\Control\Lsa  /v TurnOffAnonymousBloc   /t  REG_DWORD  /d  1   /f
+ 2.3.10.2, HKLM\SYSTEM\CurrentControlSet\Control\Lsa  /v RestrictAnonymousSAM  /t REG_DWORD   /d  1  /f
+ 2.3.10.3, HKLM\SYSTEM\CurrentControlSet\Control\Lsa RestrictAnonymous  /t  REG_DWORD   /d  1  /f
+ 2.3.10.5, HKLM\SYSTEM\CurrentControlSet\Control\Lsa  /v EveryoneIncludesAnonymous   /t REG_DWORD   /d  0  /f
+ 2.3.10.6," HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v   NullSessionPipes   /t REG_MULTI_SZ    ""LSARPC,NETLOGON,SAMR"""
+ 2.3.10.7, HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v  NullSessionPipes   /t  REG_MULTI_SZ   /d  0  /f
+ 2.3.10.8," HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths  /v  Machine   /d   ""System\CurrentControlSet\Control\ProductOptions,System\CurrentControlSet\Control\Server Applications,Software\Microsoft\Windows NT\CurrentVersion""  /f"
+ 2.3.10.9," HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths:Machine   /t  REG_MULTI_SZ  /d  ""System\CurrentControlSet\Control\Print\Printers,System\CurrentControlS et\Services\Eventlog,Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,System\CurrentControlSet\Control\Terminal Server,System\CurrentControlSet\Control\Terminal Server\UserConfig,System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,Software\Microsoft\Windows NT\CurrentVersion\Perflib,System\CurrentControlSet\Services\SysmonLog, System\CurrentControlSet\Services\CertSvc,System\CurrentControlSet\Services\WINS""  /f "
+ 2.3.10.10,HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters  /v  RestrictNullSessAc /t   REG_DWORD   /d  1   /f
+ 2.3.10.11," HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v restrictremotesam  /t  REG_SZ   /d   ""O:BAG:BAD:(A;;RC;;;BA)""  /f"
+ 2.3.10.12," HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters /v   NullSessionShares   /t REG_MULTI_SZ    /d  """"  /f"
+ 2.3.10.13, HKLM\SYSTEM\CurrentControlSet\Control\Lsa  /v   ForceGuest  /t  REG_DWORD   /d  0  /f
+ 2.3.11.1, HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v  UseMachineId   /t REG_DWORD   /d  1 /f
+ 2.3.11.2, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0  /v  AllowNullSessionFallback   /t REG_DWORD   /d  0  /f
+ 2.3.11.3, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\pku2u  /v AllowOnlineID   /t  REG_DWORD   /d  0  /f
+ 2.3.11.4, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters   /v  SupportedEncryptionTypes   /t REG_DWORD   /d   2147483640    /f
+ 2.3.11.5, HKLM\SYSTEM\CurrentControlSet\Control\Lsa  /v  NoLMHash   /t  REG_DWORD   /d  1  /f
+ 2.3.11.7, HKLM\SYSTEM\CurrentControlSet\Control\Lsa  /v LmCompatibilityLevel  /t  REG_DWORD   /d   5  /f
+ 2.3.11.8, HKLM\SYSTEM\CurrentControlSet\Services\LDAP  /v LDAPClientConfidentiality   /t  REG_DWORD  /d  1   /f
+ 2.3.11.9, HKLM\SYSTEM\CurrentControlSet\Services\LDAP   /v LDAPClientIntegrity    /t  REG_DWORD   /d   1  /f
+ 2.3.11.10, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0   /v NTLMMinClientSec   /t  REG_DWORD   /d  537395200  /f
+ 2.3.11.11, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0  /v  NTLMMinServerSec  /t  REG_DWORD   /d  537395200  /f
+ 2.3.11.12, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0  /v AuditReceivingNTLMTraffic /t   REG_DWORD   /d   2  /f
+ 2.3.11.13, HKLM\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters  /v AuditNTLMInDomain  /t  REG_DWORD   /d  7 /f
+ 2.3.11.14, HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0  /v RestrictSendingNTLMTraffic   /t  REG_DWORD   /d  2   /f
+ 2.3.13.1, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ShutdownWithoutLogon  /t REG_DWORD    /d  0  /f 
+ 2.3.15.1,"""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel""  /v ObCaseInsensitive  /t  REG_DWORD   1  /f"
+ 2.3.15.2,"""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager""  /v  ProtectionMode   /t  REG_DWORD   /d   1  /f"
+ 2.3.17.1, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v  FilterAdministratorToken   /t  REG_DWORD   /d  1 /f
+ 2.3.17.2, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin  /t REG_DWORD   /d  1  /f
+ 2.3.17.3, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorUser /t  REG_DWORD   /d  0   /f 
+ 2.3.17.4,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableInstallerDetection /t REG_DWORD   /d 1   /f
+ 2.3.17.5,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System  /v EnableSecureUIApaths  /t REG_DWORD   /d 1   /f
+ 2.3.17.6, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA  /t REG_DWORD   /d 1  /f
+ 2.3.17.7, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System  /v PromptOnSecureDesktop  /t REG_DWORD  /d  1    /f
+ 2.3.17.8, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System  /v EnableVirtualization  /t REG_DWORD   /d  1 /f
+5.1, HKLM\SYSTEM\CurrentControlSet\Services\Spooler  /v Start  /t REG_DWORD   /d 4 /f
+9.1.1, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile /v EnableFirewall /t REG_DWORD   /d 1 /f
+9.1.2, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile /v DefaultInboundAction  /t REG_DWORD   /d 1 /f
+9.1.3, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile /v DisableNotifications  /t REG_DWORD   /d 1 /f
+9.1.4," HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging /v LogFilePath /t REG_SZ   /d ""%SystemRoot%\System32\logfiles\firewall\domainfw.log"" /f"
+9.1.5, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging /v LogFileSize /t REG_DWORD   /d 16384 /f
+9.1.6, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging /vLogDroppedPackets  /t REG_DWORD   /d 1 /f
+9.1.7, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging /v LogSuccessfulConnections /t REG_DWORD  /d 1 f
+9.2.1, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile /v EnableFirewall /t REG_DWORD   /d 1 /f
+9.2.2, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile /v DefaultInboundAction  /t REG_DWORD   /d 1 /f
+9.2.3, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile /v DisableNotifications  /t REG_DWORD   /d 1 /f
+9.2.4," HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging /v LogFilePath  /t REG_SZ /d  ""%SystemRoot%\System32\logfiles\firewall\privatefw.log"""
+9.2.5, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging /v LogFileSize /t REG_DWORD   /d 16384 /f
+9.2.6, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging /v  LogDroppedPackets /t REG_DWORD   /d 1 /f
+9.2.7, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging /v LogSuccessfulConnections /t  REG_DWORD  /d 1 /f
+9.3.1, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile /v EnableFirewall  /t REG_DWORD    /d 1  /f
+9.3.2, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile /v DefaultInboundAction /t REG_DWORD   /d 1 /f
+9.3.3, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile /v DisableNotifications /t REG_DWORD  /d 1 /f
+9.3.4, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile /v AllowLocalPolicyMerge /t  REG_DWORD  /d  0 /f
+9.3.5, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile /v AllowLocalIPsecPolicyMerge /t  REG_DWORD   /d 0 /f
+9.3.6," HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging /v LogFilePath /t REG_SZ  /d  ""%SystemRoot%\System32\logfiles\firewall\publicfw.log"" /f"
+9.3.7, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging /v LogFileSize  /t REG_DWORD   /d 16384 /f
+9.3.8, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging /v LogDroppedPackets /t REG_DWORD  /d 1 /f
+9.3.9, HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging /v LogSuccessfulConnections /t REG_DWORD  /d  f
+17.1.1," auditpol /set /subcategory:""{0cce923f-69ae-11d9-bed3-505054503030}"" /success:enable /failure:enable"
+17.1.2," auditpol /set /subcategory:""{0cce9242-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.1.3," auditpol /set /subcategory:""{0cce9240-69ae-11d9-bed3-505054503030}"" /success:enable /failure:enable"
+17.2.1," auditpol /set /subcategory:""{0cce9239-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.2.2," auditpol /set /subcategory:""{0cce9236-69ae-11d9-bed3-505054503030}"" /success:enable"
+17.2.3," auditpol /set /subcategory:""{0cce9238-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.2.4," auditpol /set /subcategory:""{0cce923a-69ae-11d9-bed3-505054503030}""   /success:enable"
+17.2.5," auditpol /set /subcategory:""{0cce9237-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.2.6," auditpol /set /subcategory:""{0cce9235-69ae-11d9-bed3-505054503030}""   /success:enable /failure:enable"
+17.3.1," auditpol /set /subcategory:""{0cce9248-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.3.2,"auditpol /set /subcategory:""{0cce922b-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.4.1," auditpol /set /subcategory:""{0cce923b-69ae-11d9-bed3-505054503030}"" /failure:enable"
+17.4.2," auditpol /set /subcategory:""{0cce923c-69ae-11d9-bed3-505054503030}""   /success:enable"
+17.5.1," auditpol /set /subcategory:""{0cce9217-69ae-11d9-bed3-505054503030}""   /failure:enable"
+17.5.2," auditpol /set /subcategory:""{0cce9249-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.5.3," auditpol /set /subcategory:""{0cce9216-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.5.4," auditpol /set /subcategory:""{0cce9215-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.5.5," auditpol /set /subcategory:""{0cce921c-69ae-11d9-bed3-505054503030}""   /success:enable /failure:enable"
+17.5.6," auditpol /set /subcategory:""{0cce921b-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.6.1," auditpol /set /subcategory:""{0cce9244-69ae-11d9-bed3-505054503030}""  /failure:enable"
+17.6.2," auditpol /set /subcategory:""{0cce9224-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.6.3," auditpol /set /subcategory:""{0cce9227-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.6.4," auditpol /get /subcategory:""{0cce9245-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.7.1," auditpol /set /subcategory:""{0cce922f-69ae-11d9-bed3-505054503030}"" /success:enable"
+17.7.2," auditpol /set /subcategory:""{0cce9230-69ae-11d9-bed3-505054503030}""   /success:enable"
+17.7.3," auditpol /set /subcategory:""{0cce9231-69ae-11d9-bed3-505054503030}""   /success:enable"
+17.7.4," auditpol /set /subcategory:""{0cce9232-69ae-11d9-bed3-505054503030}"" /success:enable /failure:enable"
+17.7.5," auditpol /set /subcategory:""{0cce9234-69ae-11d9-bed3-505054503030}""  /failure:enable"
+17.8.1," auditpol /set /subcategory:""{0cce9228-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.9.1," auditpol /set /subcategory:""{0cce9213-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.9.2," auditpol /set /subcategory:""{0cce9214-69ae-11d9-bed3-505054503030}""  /success:enable /failure:enable"
+17.9.3," auditpol /set /subcategory:""{0cce9210-69ae-11d9-bed3-505054503030}""  /success:enable"
+17.9.4," auditpol /set /subcategory:""{0cce9211-69ae-11d9-bed3-505054503030}""   /success:enable"
+17.9.5," auditpol /get /subcategory:""{0cce9212-69ae-11d9-bed3-505054503030}"" /success:enable /failure:enable"
+18.1.1.1, HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization /v NoLockScreenCamera /t REG_DWORD  /d 1 /f
+18.1.1.2, HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization /v NoLockScreenSlideshow /t REG_DWORD  /d 1 /f
+18.1.2..2, HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization /v AllowInputPersonalization  /t REG_DWORD   /d 0  /f
+18.4.1, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy   /t REG_DWORD  /d 0
+18.4.2, HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10 /v Start /t REG_DWORD   /d 4 /f
+18.4.3, HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v SMB1 /t REG_DWORD  /d 0 /f
+18.4.4, HKLM\SOFTWARE\Microsoft\Cryptography\Wintrust\Config /v EnableCertPaddingCheck /t REG_SZ   /d 1 /f
+18.4.5,""" HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel"" /v DisableExceptionChainValidation"
+18.4.6, HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters /v NodeType /t REG_DWORD  /d  /2 /f
+18.4.7, HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /v REG_DWORD   /d 0 /f
+18.5.1,""" HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"" /v AutoAdminLogon /t REG_SZ  /d 0 /f"
+18.5.2, HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters /v DisableIPSourceRouting  /t REG_DWORD  /d 2 /f
+18.5.3, HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v DisableIPSourceRouting /t REG_DWORD  /d 2 /f
+18.5.4, HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameter /v EnableICMPRedirect  /t REG_DWORD  /d 0 /f
+18.5.5,HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v KeepAliveTime /t REG_DWORD  /d 300000 /f
+18.5.6, HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters /v NoNameReleaseOnDemand t REG_DWORD  /d 1 /f
+18.5.8,"""HKLM\SYSTEM\CurrentControlSet\Control\Session Manager"" /v SafeDllSearchMode /t  REG_DWORD  /d 1 /f"
+18.5.9,"""HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"" /v ScreenSaverGracePeriod  /t REG_SZ  /d 5 /f"
+18.5.12, HKLM\SYSTEM\CurrentControlSet\Services\Eventlog\Security /v WarningLevel  /t REG_DWORD  /d 90  /f
+18.6.4.1,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient""  /v EnableMDNS  /t  REG_DWORD   /d 0 /f"
+18.6.4.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient"" /v EnableNetbios  /t REG_DWORD   /d 0 /f"
+18.6.4.4,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient"" /v EnableMulticast  /t REG_DWORD   /d 0 /f"
+18.6.7.1, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer: /v uditClientDoesNotSupportEncryption /t REG_DWORD   /d 1 /f
+18.6.7.2, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer /v AuditClientDoesNotSupportSigning /t  REG_DWORD   /d  1  /f
+18.6.7.3, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer: /v AuditInsecureGuestLogon /t REG_DWORD   /d 1 /f
+18.6.7.4, HKLM\SOFTWARE\Policies\Microsoft\Windows\Bowser /v EnableMailslots  /t  REG_DWORD   /d 0 /f
+18.6.7.5, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer /v MinSmb2Dialect  /t REG_DWORD   /d 311 /f
+18.6.7.6, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer /v InvalidAuthenticationDelayTimeInMs  /t REG_DWORD   /d 2000 /f
+18.6.8.1, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v AuditInsecureGuestLogon /t REG_DWORD   /d 1 /f
+18.6.8.2, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v AuditServerDoesNotSupportEncryption /t REG_DWORD  /d 1 /f
+18.6.8.3, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v AuditServerDoesNotSupportSigning  /t  REG_DWORD   /d 1 /f
+18.6.8.4, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanServer /v EnableAuthRateLimiter  /t REG_DWORD  /d  1  /f
+18.6.8.5, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v AllowInsecureGuestAuth /t  REG_DWORD   /d 0 /f
+18.6.8.6, HKLM\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider /v nableMailslots /t REG_DWORD  /d  0 /f
+18.6.8.7, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v MinSmb2Dialect  /t REG_DWORD   /d 311 /f
+18.6.8.8, HKLM\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation /v RequireEncryption  /t REG_DWORD   /d 1 /f
+18.6.11.2 ,"""HKLM\SOFTWARE\Policies\Microsoft\Windows\Network Connections""  /v NC_AllowNetBridge_NLA /t REG_DWORD   /d 0 /f"
+18.6.11.3,"""HKLM\SOFTWARE\Policies\Microsoft\Windows\Network Connections""  /v NC_ShowSharedAccessUI   /t REG_DWORD   /d 0  /f"
+18.6.11.4,"""HKLM\SOFTWARE\Policies\Microsoft\Windows\Network Connections""  /v NC_StdDomainUserSetLocation"
+18.6.14.1," HKLM\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths /v  ""\\*\NETLOGON""   /t  REG_SZ /d  ""RequireMutualAuthentication=1, RequireIntegrity=1, RequirePrivacy=1""  /f"
+," HKLM\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths /v  ""\\*\SYSVOL""  /t REG_SZ  /d ""RequireMutualAuthentication=1, RequireIntegrity=1, RequirePrivacy=1"" /f"
+18.6.19.2.1, HKLM\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters /v DisabledComponents  /t   REG_DWORD /d  255  /f
+18.6.21.2.2, HKLM\SOFTWARE\Policies\Microsoft\Windows\WcmSvc\GroupPolicy /v fMinimizeConnections /t REG_DWORD   /d 3 /f
+18.7.1,"""HKLM\Software\Policies\Microsoft\Windows NT\Printers"" /v RegisterSpoolerRemoteRpcEndPoint  /t REG_DWORD   /d  2 /f"
+18.7.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers"" /v RedirectionguardPolicy /t REG_DWORD   /d  1  /f"
+18.7.3,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC"" /v RpcUseNamedPipeProtocol /t REG_DWORD  /d 0 /f"
+18.7.4," HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC"" /v RpcAuthentication /t REG_DWORD   /d 0  /f"
+18.7.5,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC"" /v RpcProtocols /t REG_DWORD   /d 5 /f"
+18.7.6,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC"" /v ForceKerberosForRpc  /t REG_DWORD   /d 1 /f"
+18.7.7," ""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC"" /v RpcTcpPort  /t REG_DWORD   /d 0  /f"
+18.7.8, HKLM\SYSTEM\CurrentControlSet\Control\Print /v RpcAuthnLevelPrivacyEnabled /t REG_DWORD   /d 1  /f
+18.7.10,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint"" /v RestrictDriverInstallationToAdministrators  /t  REG_DWORD  /d 1  /f"
+18.7.11," HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers"" /v CopyFilesPolicy  /t REG_DWORD  /d 1 /f"
+18.7.12,"""HKLM\Software\Policies\Microsoft\Windows NT\Printers\PointAndPrint"" /v NoWarningNoElevationOnInstall  /t  REG_DWORD   /d 0 /f"
+18.7.13,"""HKLM\Software\Policies\Microsoft\Windows NT\Printers\PointAndPrint"" /v UpdatePromptSettings /t REG_DWORD  /d 0 /f"
+18.9.3.1, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit /v ProcessCreationIncludeCmdLine_Enabled  /t REG_DWORD  /d 1 /f
+18.9.4.1, HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\CredSSP\Parameters /v AllowEncryptionOracle  /t REG_DWORD  /d 0 /f
+18.9.4.2, HKLM\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation /v AllowProtectedCreds /t REG_DWORD  /d 1 /f
+NG,
+18.9.7.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata""  /v PreventDeviceMetadataFromNetwork /t REG_DWORD  /d 1 /f"
+18.9.13.1,"""HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch"" /v DriverLoadPolicy  /t REG_DWORD   /d 3 /f"
