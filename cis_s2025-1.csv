@@ -209,3 +209,57 @@ NG,
 18.10.15.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\CredUI /v DisablePasswordReveal /t REG_DWORD  /d 1
 18.10.15.2,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI /v EnumerateAdministrators  /t REG_DWORD  /d 0 /f
 18.10.16.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry  /t REG_DWORD   /d 0 /f
+18.10.16.3,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v DisableOneSettingsDownloads  /v REG_DWORD  /d 1 /f
+18.10.16.4,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v DoNotShowFeedbackNotifications /t  REG_DWORD  /d 1 /f
+18.10.16.5,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v EnableOneSettingsAuditing  /t  REG_DWORD  /d 1 /f
+18.10.16.6,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection:LimitDiagnosticLogCollection /t REG_DWORD  /d 1 /f
+18.10.16.7,HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v LimitDumpCollection  /t REG_DWORD  /d 1  /f
+18.10.18.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstalle /v EnableExperimentalFeatures  /t   REG_DWORD  /d 0  /f
+18.10.18.3,HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstaller /v EnableHashOverride  /t  REG_DWORD  /d 0  /f
+18.10.18.4,HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstaller /v EnableLocalArchiveMalwareScanOverride /t REG_DWORD   /d 0 /f
+18.10.18.5,HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstaller /v EnableMSAppInstallerProtocol  /t REG_DWORD   /d 0 /f
+18.10.18.6,HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstaller /v EnableBypassCertificatePinningForMicrosoftStore
+18.10.26.1.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application /v Retention   /t REG_SZ  /d  0 /f
+18.10.26.1.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application /v MaxSize  /t  REG_DWORD  /d 32768 /f
+18.10.26.2.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security:Retention /t REG_SZ   /d 0 /f
+18.10.26.2.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security /v MaxSize /t REG_DWORD  /d 196608  /f
+18.10.26.3.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup /v Retention  /t  REG_SZ  /d 0 /f
+18.10.26.3.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup /v MaxSize /t REG_DWORD   /d 32768 /f
+18.10.26.4.1,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\System /v Retention   /t REG_SZ  /d 0 /f
+18.10.26.4.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\System /v MaxSize  /t REG_DWORD  /d 32768 /f
+18.10.29.2,HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer /v DisableMotWOnInsecurePathCopy /t REG_DWORD   /d 0 /f
+18.10.29.3,HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer /v NoDataExecutionPrevention  /t REG_DWORD  /d 0  /f
+18.10.29.4,HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer /v NoHeapTerminationOnCorruption   /t  REG_DWORD  /d 0 /f
+18.10.29.5,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v PreXPSP2ShellProtocolBehavior /t REG_DWORD  /d 0 /f
+18.10.43.6.1.1,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR"" /v ExploitGuard_ASR_Rules /t REG_DWORD  /d 1 /f"
+18.10.43.6.1.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v 26190899-1602-49e8-8b27-eb1d0a1ce869 /t REG_SZ  /d  1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v 3b576869-a4ec-4529-8536-b80a7769e899 /t REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v 56a863a9-875e-4185-98a7-b882c64b5ce5 /t  REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v 5beb7efe-fd9a-4556-801d-275e5ffc04cc /t  REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules"" /v 75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84 /t  REG_SZ  /d 1  /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v 7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c  /t REG_SZ  /d 1  /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules"" /v 9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2 /t REG_SZ  /d  1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4 /t REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v be9ba2d9-53ea-4cdc-84e5-9b1eeee46550 /t REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules"" /v d3e037e1-3eb8-44c8-a917-57927947596d /t REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules"" /v d4f940ab-401b-4efc-aadc-ad5f3c50688a   REG_SZ  /d 1 /f"
+,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules""  /v e6db77e5-3df2-4cf1-b95a-636979351e5b /t  REG_SZ  /d  1 /f"
+18.10.4.3.6.3.1,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection"" /v EnableNetworkProtection  /t REG_DWORD  /d 1 /f"
+18.10.43.10.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v DisableIOAVProtection /t REG_DWORD  /d 0 /f"
+18.10.43.10.3,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v DisableRealtimeMonitoring /t  REG_DWORD  /d  0  /f"
+18.10.43.10.4,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"" /v DisableBehaviorMonitoring"" /t  REG_DWORD /d 0  /f"
+18.10.43.10.5,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection""  /v DisableScriptScanning  /t REG_DWORD  /d 0 /f"
+18.10.43.11.1.1.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation\Behavioral Network Blocks\Brute Force Protection"" /v BruteForceProtectionConfiguredState /t REG_DWORD  /d 2 /f"
+18.10.43.13.1,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"" /v QuickScanIncludeExclusions  /t REG_DWORD  /d  1 /f"
+18.10.43.13.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"" /v DisablePackedExeScanning""  /t REG_DWORD  /d 0  /f"
+18.10.43.13.3,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"" /v DisableRemovableDriveScanning /t  REG_DWORD  /d 0 /f"
+18.10.43.13.4,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"" /v DaysUntilAggressiveCatchupQuickScan  /t  REG_DWORD  /d 7 /f"
+18.10.43.13.5,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan""  /v DisableEmailScanning  /t  REG_DWORD  /d 0 /f"
+18.10.43.13.17,"""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"" /v HideExclusionsFromLocalUsers /t  REG_DWORD  /d 1 /f"
+18.10.57.2.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services"" /v DisablePasswordSaving  /t REG_DWORD  /d 1"
+18.10.57.3.9.5,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services""  /v MinEncryptionLevel /t REG_DWORD  /d 3 /f"
+18.10.57.3.11.2,"""HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services""  /v PerSessionTempDir /t  REG_DWORD  /d 1 /f"
+18.10.59.3,"""HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search"" /v AllowIndexingEncryptedStoresOrItems /t REG_DWORD  /d 0 /f"
+18.10.82.2,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableAutomat icRestartSignOn /t  REG_DWORD  /d 1  /f
+18.10.89.1.3,HKLM\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client /v AllowDigest  /t REG_DWORD  /d 0  /f
+18.10.89.2.4,HKLM\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service /v DisableRunAs /t REG_DWORD  /d 1  /f
