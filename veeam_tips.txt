@@ -1,0 +1,67 @@
+Safe hardening practices with Veeam
+Use Veeam’s official hardening guides: Veeam publishes scripts aligned with CIS benchmarks that preserve backup functionality while tightening security. These scripts avoid disabling required registry keys.
+
+Validate services: Ensure VSS, RPC, and WMI services are running and accessible.
+
+Check permissions: The Veeam service account must have local admin rights and “Log on as a service” privileges.
+
+Audit registry changes: Compare your hardened registry against a clean baseline. Look for entries under:
+
+HKLM\SYSTEM\CurrentControlSet\Services\VSS
+
+HKLM\SYSTEM\CurrentControlSet\Services\RpcSs
+
+HKLM\SOFTWARE\Veeam
+
+The registry path HKLM\SYSTEM\CurrentControlSet\Services\VSS controls the Volume Shadow Copy Service (VSS) itself. Veeam relies on VSS to take consistent snapshots of disks and applications. If backups are failing, the goal is not to “change” arbitrary values here, but to make sure the service is enabled and running correctly.
+
+Safe checks under Services\VSS
+Start value
+
+Registry key: HKLM\SYSTEM\CurrentControlSet\Services\VSS\Start
+
+This defines the startup type.
+
+2 = Automatic
+
+3 = Manual
+
+4 = Disabled
+
+For Veeam, this must not be 4. Typically it should be 3 (manual) or 2 (automatic). If hardening set it to 4, backups will fail.
+
+ImagePath
+
+Registry key: HKLM\SYSTEM\CurrentControlSet\Services\VSS\ImagePath
+
+Should point to %SystemRoot%\system32\vssvc.exe. If this path is missing or altered, the service won’t start.
+
+Type
+
+Registry key: HKLM\SYSTEM\CurrentControlSet\Services\VSS\Type
+
+Should be 0x20 (Win32 service). Don’t change this unless corrupted.
+
+What not to do
+Don’t delete subkeys or values under VSS.
+
+Don’t disable dependent services like RpcSs (Remote Procedure Call) or COM+ Event System, which VSS requires.
+
+Don’t apply blanket CIS hardening rules that set all unused services to disabled — VSS is required for backups.
+
+Recommended action
+Open regedit and check HKLM\SYSTEM\CurrentControlSet\Services\VSS\Start.
+
+If it’s 4, change it back to 3 (manual).
+
+Verify the service in Services.msc:
+
+Service name: Volume Shadow Copy
+
+Startup type: Manual or Automatic
+
+Status: Running when a backup is triggered.
+
+Restart the server or run net start vss to confirm it starts.
+
+Test a Veeam backup job again.
