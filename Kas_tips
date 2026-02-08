@@ -1,0 +1,80 @@
+Applying a License in Kaspersky Security Center
+Open the Administration Console
+
+Open the Administration Console
+
+Launch the Kaspersky Security Center Administration Console or Web Console.
+
+Access Administration Server Properties
+
+In the main menu, click the settings icon next to the Administration Server you want to manage.
+
+The Administration Server properties window will open.
+
+Navigate to License Keys
+
+Go to the General tab.
+
+Select the License keys section.
+
+Select or Add a License
+
+Under Current license, click Select.
+
+If the license key is already listed, choose it.
+
+If not, click Add new license key and enter the license file or activation code.
+
+Deploy License to Endpoints
+
+Once the license is added to the Administration Server, it can be distributed to managed endpoints (including Linux).
+
+Use a remote installation task or the Protection Deployment Wizard to push Kaspersky Endpoint Security for Linux along with the license.
+
+The license will be automatically applied during deployment or updated via synchronization.
+
+Steps to Create and Run the Remote License Activation Task
+Open the Administration Console / Web Console
+
+Connect to your Kaspersky Security Center Administration Server.
+
+Create a New Task
+
+In the console tree, go to Tasks → For specific computers (or for an administration group).
+
+Right‑click → New Task.
+
+Select Task Type
+
+Choose Application activation (this is the task type specifically for applying licenses).
+
+Select Kaspersky Endpoint Security for Linux as the target application.
+
+Choose License Source
+
+You can either:
+
+Use a license key already stored on the Administration Server, or
+
+Upload a new license key (file or activation code
+The task will distribute this license to the selected endpoint(s).
+
+Assign Target Devices
+
+Add your Linux endpoint(s) to the task scope.
+
+You can select individual devices or entire groups.
+
+Configure Schedule
+
+Run the task immediately or set a schedule (e.g., recurring if you want automatic re‑application in case of reinstall).
+
+Finish and Run
+
+Save the task and run it.
+
+The Administration Server will push the license to the endpoint via the Network Agent.
+
+To verify
+kesl-control --app-info
+
