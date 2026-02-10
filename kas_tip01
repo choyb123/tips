@@ -1,0 +1,55 @@
+Yes — klcfginst.msi is the installer for Kaspersky management plug‑ins. Running it adds the administration plug‑in for a specific Kaspersky product into the Kaspersky Security Center (KSC) console, 
+so that KSC can recognize and manage that product.
+
+How It Works
+The Network Agent alone only connects endpoints to KSC.
+
+To manage Endpoint Security for Linux, you need its management plug‑in installed in KSC.
+
+The plug‑in installer is usually named klcfginst.msi and comes bundled with the product distribution kit.
+
+Once installed, the plug‑in adds the product’s settings and tasks into the KSC console, enabling remote deployment and policy management
+
+--Next Steps for Your Case
+Download the Endpoint Security for Linux distribution kit from Kaspersky’s site.
+
+Locate the klcfginst.msi file inside that kit.
+
+Run it on the server where the KSC Administration Console is installed.
+
+After installation, KSC will display Endpoint Security for Linux as a manageable application.
+
+Add the Linux installer package into KSC and deploy it to endpoints via remote installation tasks.
+
+Once you’ve installed the management plug‑in (klcfginst.msi) for Kaspersky Endpoint Security for Linux (KESL), you can add the .deb installer package into Kaspersky Security Center (KSC) 
+so it can be deployed to endpoints.
+
+Steps in the KSC Console
+Open KSC Administration Console.
+
+Navigate to:
+Administration Server → Advanced → Remote Installation → Installation Packages.
+
+Create a new installation package:
+
+Right‑click Installation Packages → New → Installation Package from Executable File.
+
+Browse to the kesl-xxx.deb file you downloaded.
+
+KSC will wrap this into a deployable package.
+Once the package is created, you’ll see Kaspersky Endpoint Security for Linux listed under installation packages.
+
+Deploy to endpoints:
+
+Go to Tasks → Remote Installation → New Task.
+
+Select the package you just added.
+
+Target the Linux endpoints that already have the Network Agent installed.
+
+Run the task.
+
+Verify installation:
+
+After deployment, check the endpoint status in KSC. It should show both Network Agent and Endpoint Security for Linux installed.
+
