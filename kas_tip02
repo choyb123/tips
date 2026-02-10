@@ -1,0 +1,29 @@
+Common Kaspersky Policy Settings That Block GPO
+--Network traffic filtering / Firewall rules
+
+If Kaspersky’s firewall policy blocks SMB, LDAP, or Kerberos traffic, endpoints cannot contact the domain controller to download GPOs.
+
+Ports like TCP/UDP 135, 389, 445, 88 must remain open for Group Policy processing.
+
+--Application Startup Control / HIPS
+
+Policies that restrict svchost.exe, lsass.exe, or winlogon.exe can prevent the system from authenticating with the domain controller.
+
+--Device Control / Network Control
+
+If policies restrict access to network shares, the endpoint may fail to read the SYSVOL folder where GPOs are stored.
+
+--Encryption or traffic inspection
+
+SSL/TLS inspection policies can interfere with secure channel communication between the endpoint and domain controller.
+
+--Policy inheritance conflicts in KSC
+
+If the endpoint is placed in a Kaspersky group with stricter rules than intended, those rules override domain GPO application.
+
+
+gpupdate /force, If it fails, check Kaspersky logs for blocked connections.
+
+In KSC, review the applied security policy for that endpoint. Look at Network Settings → Firewall and Application Control.
+
+Temporarily disable Kaspersky protection and retry gpupdate. If GPOs apply successfully, the block is within Kaspersky’s policy.
