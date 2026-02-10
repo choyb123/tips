@@ -78,3 +78,8 @@ The Administration Server will push the license to the endpoint via the Network 
 To verify
 kesl-control --app-info
 
+??   sudo /opt/kaspersky/kesl/bin/kesl-setup.pl --license /path/to/license.key
+??  sudo /opt/kaspersky/kesl/bin/kesl-setup.pl --activation-code XXXXX-XXXXX-XXXXX-XXXXX
+
+
+
