@@ -1,0 +1,33 @@
+DECLARE @SearchValue NVARCHAR(100) = 'fms';
+DECLARE @SchemaName NVARCHAR(128);
+DECLARE @TableName NVARCHAR(128);
+DECLARE @ColumnName NVARCHAR(128);
+DECLARE @SQL NVARCHAR(MAX);
+
+DECLARE cur CURSOR FOR
+SELECT s.name, t.name, c.name
+FROM sys.tables t
+JOIN sys.columns c ON t.object_id = c.object_id
+JOIN sys.schemas s ON t.schema_id = s.schema_id
+JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+WHERE ty.name IN ('char','nchar','varchar','nvarchar','text','ntext');
+
+OPEN cur;
+FETCH NEXT FROM cur INTO @SchemaName, @TableName, @ColumnName;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    SET @SQL = 
+        'SELECT ''' + @SchemaName + '.' + @TableName + ''' AS TableName, ' +
+        '''' + @ColumnName + ''' AS ColumnName, ' +
+        QUOTENAME(@ColumnName) + ' AS ValueFound ' +
+        'FROM ' + QUOTENAME(@SchemaName) + '.' + QUOTENAME(@TableName) + ' ' +
+        'WHERE ' + QUOTENAME(@ColumnName) + ' LIKE ''%' + @SearchValue + '%''';
+
+    EXEC sp_executesql @SQL;
+
+    FETCH NEXT FROM cur INTO @SchemaName, @TableName, @ColumnName;
+END
+
+CLOSE cur;
+DEALLOCATE cur;
